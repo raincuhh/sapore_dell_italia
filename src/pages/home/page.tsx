@@ -1,9 +1,13 @@
-function App() {
+import { Footer } from "../../components/footer";
+import { Hero } from "../../widgets/home/hero";
+
+function HomePage() {
   return (
-    <div className="app">
-      Hello World!
-    </div>
+    <main className="page">
+      <Hero/>
+      <Footer/>
+    </main>
   );
 }
 
-export default App;
+export default HomePage;
