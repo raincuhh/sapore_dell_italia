@@ -1,0 +1,42 @@
+# Set default behavior to automatically normalize line endings
+* text=auto
+
+# Specify how to treat specific file types
+
+# JavaScript and TypeScript files
+*.js    text
+*.ts    text
+
+# JSON files
+*.json  text
+
+# Markdown files
+*.md    text
+
+# HTML files
+*.html   text
+
+# CSS files
+*.css    text
+
+# Images
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.svg   binary
+
+# Other binary files
+*.zip   binary
+*.tar   binary
+*.gz    binary
+
+# Specify merge strategies for specific file types
+*.lock  merge=union
+
+# End-of-line normalization
+*.sh    text eol=lf
+*.bat   text eol=crlf
+
+# Specify that .env files should be treated as binary to avoid changes
+*.env   binary
