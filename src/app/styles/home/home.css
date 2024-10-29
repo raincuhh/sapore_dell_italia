@@ -52,7 +52,7 @@
    }
 }
 
-@media (min-width: 557px) {
+@media (min-width: 587px) {
    .hero_container {
       gap: var(--s-marg-em-m);
    }
@@ -73,7 +73,7 @@
 
 @media (min-width: 587px) {
    .hero_title p {
-      font-size: var(--s-fs-xxl);
+      font-size: calc(var(--s-fs-xxl) * 1.2);
    }
 }
 
@@ -99,7 +99,7 @@
 
 @media (min-width: 587px) {
    .hero_title_list .hero_title_list_inner .h1 {
-      font-size: var(--s-fs-xxl);
+      font-size: calc(var(--s-fs-xxl) * 1.095);
    }
 }
 
@@ -198,20 +198,24 @@
    margin-top: calc(var(--s-marg-em-xxl) * 2);
 }
 
+.recommended_catalog_grid {
+   gap: var(--s-marg-em-s);
+}
+
 .food_preview_profile_wrapper {
    border: 1px solid var(--s-secondary-low-opacity);
-   padding: var(--s-marg-em-xs);
+   padding: var(--s-marg-em-s);
 }
 
 @media (min-width: 768px) {
    .food_preview_profile {
-      flex: 1 1 calc(33.33% - var(--s-marg-em-xs));
+      flex: 1 1 calc(33.33% - var(--s-marg-em-s));
    }
 }
 
 @media (max-width: 767px) and (min-width: 567px) {
    .food_preview_profile {
-      flex: 1 1 calc(50% - var(--s-marg-em-xs));
+      flex: 1 1 calc(50% - var(--s-marg-em-s));
    }
 }
 
@@ -223,6 +227,6 @@
       width: 100%;
    }
    .food_preview_profile:not(.recommended_food_profile:last-child) {
-      margin-bottom: var(--s-marg-em-xs);
+      margin-bottom: var(--s-marg-em-s);
    }
 }

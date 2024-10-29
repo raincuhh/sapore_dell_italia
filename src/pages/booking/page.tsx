@@ -1,3 +1,3 @@
-export default function Booking() {
+export default function PageBooking() {
    return <div>Booking</div>;
 }

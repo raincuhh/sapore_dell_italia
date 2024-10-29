@@ -1,5 +1,5 @@
 import React from "react";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "splitting/dist/splitting.css";
@@ -19,7 +19,7 @@ export default function ShortAbout(): JSX.Element {
    const ref_thumbnail_box_shadow: React.RefObject<HTMLDivElement> =
       useRef<HTMLDivElement>(null);
 
-   React.useEffect(() => {
+   useEffect(() => {
       animate_paragraph(ref_category_short_about, ref_paragraph);
       animate_thumbnail(
          ref_category_short_about,
@@ -33,7 +33,7 @@ export default function ShortAbout(): JSX.Element {
          className="category category_short_about"
          ref={ref_category_short_about}
       >
-         <HomeCategoryLayout innerName="in_cont_short_about">
+         <HomeCategoryLayout inner_name="in_cont_short_about">
             <section className="short_about">
                <div className="short_about_paragraph">
                   <p ref={ref_paragraph}>

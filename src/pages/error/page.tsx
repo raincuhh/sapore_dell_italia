@@ -1,6 +1,6 @@
 import { useRouteError, Navigate, Link } from "react-router-dom";
 
-export function ErrorBoundary(): JSX.Element {
+export default function PageError(): JSX.Element {
    const error: unknown = useRouteError();
    console.error(error);
 

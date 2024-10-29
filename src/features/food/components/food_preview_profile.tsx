@@ -1,26 +1,9 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import gsap from "gsap";
+import { FoodInfo } from "../lib/types";
 
-export interface food_info_params {
-   id: number | undefined;
-   name: string | undefined;
-   price: string | undefined;
-   short_desc: string | undefined;
-   long_desc: string | undefined;
-   image_paths: Array<string> | undefined;
-}
-
-type food_info = {
-   id: number;
-   name: string;
-   price: string;
-   short_desc: string;
-   long_desc: string;
-   image_paths: string[];
-};
-
-export default function FoodPreviewProfile(profile: food_info) {
+export default function FoodPreviewProfile(profile: FoodInfo) {
    const ref_food_preview_profile: React.RefObject<HTMLDivElement> =
       useRef<HTMLDivElement>(null);
    const ref_booking_arrow: React.RefObject<HTMLDivElement> =
@@ -30,7 +13,7 @@ export default function FoodPreviewProfile(profile: food_info) {
    const ref_hover_img: React.RefObject<HTMLImageElement> =
       useRef<HTMLImageElement>(null);
 
-   React.useEffect(() => {
+   useEffect(() => {
       animate_food_preview_img(ref_hover_img);
       animate_profile(
          ref_food_preview_profile,
@@ -44,7 +27,7 @@ export default function FoodPreviewProfile(profile: food_info) {
          <div
             ref={ref_food_preview_profile}
             className="food_preview_profile flex-1 w-full h-min"
-            id={profile.name}
+            id={`food_preview_profile_${profile.name}`}
          >
             <div className="food_preview_profile_wrapper w-full h-min">
                <Link

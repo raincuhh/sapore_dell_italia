@@ -31,6 +31,7 @@ module.exports = {
       open: true,
       port: 3000,
       hot: true,
+      publicPath: "/",
    },
    plugins: [],
    mode: "development",

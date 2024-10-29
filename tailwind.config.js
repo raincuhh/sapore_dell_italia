@@ -23,7 +23,7 @@ module.exports = {
             "m-em-l": "calc(1em * 1.618)",
             "m-em-xl": "calc((1em * 1.618) * 1.618)",
             "m-em-xxl": "calc(((1em * 1.618) * 1.618) * 1.618)",
-            "max-width": "clamp(70rem, 53vw, 84rem)",
+            "max-width": "clamp(76rem, 53vw, 84rem)",
          },
          fontSize: {
             "fs-xxs": "clamp(0.7rem, 1.25vw + 0.5rem, 0.875rem)",

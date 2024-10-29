@@ -15,10 +15,7 @@
    --s-tertiary: rgba(237, 225, 218, 1);
 
    --s-transition-hover-base: all ease-in-out 100ms;
-
-   --s-loader-max-width: clamp(64rem, 84vw, 104rem);
-   --s-max-width: clamp(70rem, 53vw, 84rem);
-   --s-page-side-padding: clamp(1rem, 3vw, 3rem);
+   --s-max-width: clamp(76rem, 53vw, 84rem);
 
    --xs-width: 320px;
    --sm-width: 576px;
