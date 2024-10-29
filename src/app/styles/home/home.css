@@ -188,12 +188,41 @@
    user-select: none;
 }
 
-#in_cont_recommended_list {
+#in_cont_recommended_catalog {
    display: flex;
    flex-direction: column;
    margin-top: var(--s-marg-em-xs);
 }
 
-.recommended_list {
+.recommended_catalog {
    margin-top: calc(var(--s-marg-em-xxl) * 2);
+}
+
+.food_preview_profile_wrapper {
+   border: 1px solid var(--s-secondary-low-opacity);
+   padding: var(--s-marg-em-xs);
+}
+
+@media (min-width: 768px) {
+   .food_preview_profile {
+      flex: 1 1 calc(33.33% - var(--s-marg-em-xs));
+   }
+}
+
+@media (max-width: 767px) and (min-width: 567px) {
+   .food_preview_profile {
+      flex: 1 1 calc(50% - var(--s-marg-em-xs));
+   }
+}
+
+@media (max-width: 566px) {
+   .recommended_catalog_grid {
+      display: block;
+   }
+   .food_preview_profile {
+      width: 100%;
+   }
+   .food_preview_profile:not(.recommended_food_profile:last-child) {
+      margin-bottom: var(--s-marg-em-xs);
+   }
 }

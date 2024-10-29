@@ -1,17 +1,15 @@
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 
 const base_url: string = window.location.origin;
 
-export async function get_recommended_food_list(): Promise<any> {
-   console.log(base_url);
+export async function fetch_recommended_food_list_test(): Promise<any> {
    try {
-      // try to fix proxy stuff at a later date
-      const response = await axios.get(
+      // try to fix proxy localhost stuff at a later date
+      const response: AxiosResponse<any, any> = await axios.get(
          "http://localhost/sapore_dell_italia/src/features/food/api/fetch_recommended_food_list_test.php"
       );
-      //console.log(response.data);
       return response.data;
-   } catch (err) {
+   } catch (err: unknown) {
       console.error(`Error fetching recommended food list: ${err}`);
    }
 }

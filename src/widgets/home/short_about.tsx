@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "splitting/dist/splitting.css";
@@ -33,7 +33,7 @@ export default function ShortAbout(): JSX.Element {
          className="category category_short_about"
          ref={ref_category_short_about}
       >
-         <HomeCategoryLayout inner="in_cont_short_about">
+         <HomeCategoryLayout innerName="in_cont_short_about">
             <section className="short_about">
                <div className="short_about_paragraph">
                   <p ref={ref_paragraph}>
@@ -83,7 +83,6 @@ function animate_paragraph(
          start: "top-=20% top",
          end: "+=30%",
          scrub: 0.25,
-         markers: true,
       },
    });
 

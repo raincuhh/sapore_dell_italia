@@ -6,7 +6,9 @@ export default function App() {
    React.useEffect(() => {
       const sheet_path: string = get_style_sheet();
       import(`./styles/${sheet_path}`)
-         .then(() => console.log(`${sheet_path} loaded`))
+         .then(() => {
+            // console.log(`${sheet_path} loaded`);
+         })
          .catch(() => console.error(`failed to load ${sheet_path}`));
    }, [location.pathname]);
 
