@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+   --s-bg: rgba(28, 33, 38, 1);
+   --s-white: rgba(255, 255, 255, 1);
+   --s-light: rgba(239, 232, 227, 1);
+   --s-dark: rgba(23, 27, 31, 1);
+   --s-black: rgba(0, 0, 0, 1);
+   --s-main: rgba(221, 147, 102, 1);
+   --s-secondary: rgba(240, 232, 227, 1);
+   --s-secondary-low-opacity: rgba(240, 232, 227, 0.1);
+   --s-secondary-alt: rgba(229, 222, 217, 1);
+   --s-tertiary: rgba(237, 225, 218, 1);
+
+   --s-transition-hover-base: all ease-in-out 100ms;
+
+   --s-loader-max-width: clamp(64rem, 84vw, 104rem);
+   --s-max-width: clamp(70rem, 53vw, 84rem);
+   --s-page-side-padding: clamp(1rem, 3vw, 3rem);
+
+   --xs-width: 320px;
+   --sm-width: 576px;
+   --md-width: 768px;
+   --lg-width: 1024px;
+   --xl-width: 1440px;
+   --xxl-width: 2560px;
+
+   --s-marg-em-m: 1em;
+   --s-marg-em-s: calc(1em / 1.618);
+   --s-marg-em-xs: calc((1em / 1.618) / 1.618);
+   --s-marg-em-xxs: calc(((1em / 1.618) / 1.618) / 1.618);
+   --s-marg-em-l: calc(1em * 1.618);
+   --s-marg-em-xl: calc((1em * 1.618) * 1.618);
+   --s-marg-em-xxl: calc(((1em * 1.618) * 1.618) * 1.618);
+
+   --s-fs-xxs: clamp(0.7rem, 1.25vw + 0.5rem, 0.875rem);
+   --s-fs-xs: clamp(0.75rem, 1.5vw + 0.5rem, 1rem);
+   --s-fs-s: clamp(0.875rem, 1.75vw + 0.5rem, 1.125rem);
+   --s-fs-m: clamp(1rem, 2vw + 1rem, 1.5rem);
+   --s-fs-l: clamp(1.25rem, 2.5vw + 1rem, 2rem);
+   --s-fs-xl: clamp(1.5rem, 3vw + 1rem, 2.5rem);
+   --s-fs-xxl: clamp(2rem, 4vw + 1rem, 3rem);
+
+   /* for special fs elements */
+   --s-fs-special-ms: clamp(0.95rem, 1.85vw + 1rem, 1.25rem);
+   --s-fs-hero-s: clamp(0.96rem, 1.46vw + 1rem, 1.5rem);
+   --s-fs-hero-m: clamp(1.5rem, 3vw + 1rem, 1.75rem);
+
+   --s-loader-z-idx: 4000;
+   --s-cursor-z-idx: 3000;
+   --s-nav-z-idx: 2048;
+   --s-scroll-nav-z-idx: 2047;
+   --s-page-scroll-wrapper-z-idx: 100;
+
+   --s-libre-ff: "Libre Baskerville", serif;
+   --s-raleway-ff: "Raleway", sans-serif;
+   --s-inter-ff: "Inter", sans-serif;
+   --s-playfair-ff: "Playfair Display", serif;
+}
+
+*,
+*::before,
+*::after {
+   margin: 0;
+   padding: 0;
+   border: 0;
+   box-sizing: border-box;
+   background: transparent;
+   list-style: none;
+}
+
+article,
+aside,
+details,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+   display: block;
+}
+
+::-webkit-scrollbar {
+   display: none;
+}
+
+a {
+   text-decoration: none;
+}

@@ -1,18 +1,29 @@
-//import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-
-import HomePage from "../pages/home/page";
-import { BookingPage } from "../pages/booking/page";
+import React from "react";
+import { RouterProvider, useLocation } from "react-router-dom";
+import { router } from "./routers/router";
 
 export default function App() {
-  return (
-    <Router>
+   React.useEffect(() => {
+      const sheet_path: string = get_style_sheet();
+      import(`./styles/${sheet_path}`)
+         .then(() => console.log(`${sheet_path} loaded`))
+         .catch(() => console.error(`failed to load ${sheet_path}`));
+   }, [location.pathname]);
+
+   return (
       <div className="app">
-        <Routes>
-          <Route path="/" element={<HomePage/>}/>
-          <Route path="/booking" element={<BookingPage/>}/>
-        </Routes>
+         <RouterProvider router={router} />
       </div>
-    </Router>
-  );
+   );
+}
+
+function get_style_sheet(): string {
+   switch (location.pathname) {
+      case "/":
+         return "home/home.css";
+      case "/booking":
+         return "booking/booking.css";
+      default:
+         return "global.css";
+   }
 }
