@@ -80,9 +80,10 @@ function animate_paragraph(
    const tl: GSAPTimeline = gsap.timeline({
       scrollTrigger: {
          trigger: ref_category_short_about.current,
-         start: "top-=30% top",
+         start: "top-=20% top",
          end: "+=30%",
          scrub: 0.25,
+         markers: true,
       },
    });
 

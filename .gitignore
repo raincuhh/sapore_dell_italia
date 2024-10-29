@@ -133,7 +133,7 @@ dist
 
 # Webpack
 *.bundle.js
-
+*bundle.js
 
 # Build folders
 build/
