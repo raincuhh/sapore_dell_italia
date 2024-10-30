@@ -24,6 +24,7 @@
       "start:react": "react-scripts start",
       "build:react": "react-scripts build",
       "build:webpack:dev": "webpack --mode development --watch",
+      "build:webpack:prod": "webpack --mode production",
       "test": "react-scripts test"
    },
    "proxy": "http://localhost/sapore_dell_italia",

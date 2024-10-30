@@ -21,11 +21,7 @@ export default function LoginForm() {
                   <p>Log in to Sapore Dell Italia</p>
                </header>
                <div className="login_form_main">
-                  <form
-                     onSubmit={handle_form_submit}
-                     action="login"
-                     method="post"
-                  ></form>
+                  <form onSubmit={handle_form_submit}></form>
                </div>
             </section>
          </CategoryLayout>

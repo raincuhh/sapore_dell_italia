@@ -1,4 +1,4 @@
-import { useRouteError, Navigate, Link } from "react-router-dom";
+import { useRouteError, useNavigate, Link } from "react-router-dom";
 
 export default function PageError(): JSX.Element {
    const error: unknown = useRouteError();

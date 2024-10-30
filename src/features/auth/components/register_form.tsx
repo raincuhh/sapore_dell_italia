@@ -1,116 +1,76 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import CategoryLayout from "../../../shared/components/category_layout";
+import { useNavigate, Link } from "react-router-dom";
+import AuthFormInput from "./auth_form_input";
 import { register } from "../api";
 
 export default function RegisterForm() {
    const [username, set_username] = useState("");
    const [password, set_password] = useState("");
    const [email, set_email] = useState("");
+   const navigate = useNavigate();
 
-   const handle_form_submit = async (e: any) => {
+   const handle_form_submit = async (e: React.FormEvent) => {
       try {
          e.preventDefault();
-         handle_response(register(username, password, email));
+         const response: any = await register(username, password, email);
+         handle_response(response);
       } catch (err) {
          console.error("Error registering: ", err);
       }
    };
 
    const handle_response = async (response: any) => {
-      try {
-         console.log(response);
-      } catch (err) {
-         console.error("Error registering: ", err);
+      console.log(response);
+      if (response.message === "registration successful") {
+         navigate("/user");
+      } else {
+         console.error(
+            "Registration Failed: ",
+            response.data || "An error occurred"
+         );
       }
    };
 
    return (
-      <section className="category category_register_form">
-         <CategoryLayout>
-            <section className="register_form flex flex-col">
-               <div className="register_form_containr">
-                  <header className="register_form_header flex w-full justify-center text-fs-m md:text-fs-xl">
-                     <p>Register to Sapore Dell Italia</p>
-                  </header>
-                  <div className="register_form_main">
-                     <form
-                        name="register_form flex flex-col"
-                        onSubmit={handle_form_submit}
-                     >
-                        <div className="register_form_username flex flex-col">
-                           <header className="">username</header>
-                           <div className="form_input_cont">
-                              <input
-                                 type="text"
-                                 value={username}
-                                 onChange={(e) => {
-                                    set_username(e.target.value);
-                                    //console.log(e.target.value);
-                                 }}
-                                 name="register_form_username"
-                                 placeholder="username"
-                                 autoCorrect="off"
-                                 autoCapitalize="off"
-                                 aria-describedby="passworderror"
-                                 required
-                              />
-                           </div>
-                        </div>
-                        <div className="register_form_email">
-                           <header>email</header>
-                           <div className="form_input_cont">
-                              <input
-                                 type="text"
-                                 value={email}
-                                 onChange={(e) => {
-                                    set_email(e.target.value);
-                                 }}
-                                 name="register_form_email"
-                                 placeholder="email"
-                                 autoCorrect="off"
-                                 autoCapitalize="off"
-                                 aria-describedby="passworderror"
-                                 required
-                              />
-                           </div>
-                        </div>
-                        <div className="register_form_password">
-                           <header>password</header>
-                           <div className="form_input_cont">
-                              <input
-                                 type="text"
-                                 value={password}
-                                 onChange={(e) => {
-                                    set_password(e.target.value);
-                                 }}
-                                 name="register_form_password"
-                                 placeholder="password"
-                                 autoCorrect="off"
-                                 autoCapitalize="off"
-                                 aria-describedby="passworderror"
-                                 required
-                              />
-                           </div>
-                        </div>
-                        <div className="register_form_submit">
-                           <button className="register_form_submit_button">
-                              <p>
-                                 <span>Register</span>
-                              </p>
-                           </button>
-                        </div>
-                     </form>
-                  </div>
-                  <div className="register_form_login">
-                     <div className="flex flex-row">
-                        <p>Have an account?</p>
-                        <Link to={"/login"}>Login here</Link>
-                     </div>
-                  </div>
-               </div>
-            </section>
-         </CategoryLayout>
-      </section>
+      <form name="auth_form flex flex-col" onSubmit={handle_form_submit}>
+         <hr className="h-[1px] bg-secondary-low-opacity mb-m-em-l mt-m-em-m" />
+         <AuthFormInput
+            cont_name="form_username"
+            header_text="username"
+            input_type="text"
+            input_value={username}
+            input_on_change_callback={set_username}
+            input_name="auth_form_username"
+            input_placeholder="enter your username"
+         />
+         <hr className="h-[1px] bg-secondary-low-opacity my-m-em-l" />
+         <AuthFormInput
+            input_type="email"
+            cont_name="form_email"
+            header_text="email"
+            input_value={email}
+            input_on_change_callback={set_email}
+            input_name="auth_form_email"
+            input_placeholder="enter your mail"
+         />
+         <hr className="h-[1px] bg-secondary-low-opacity my-m-em-l" />
+         <AuthFormInput
+            cont_name="form_password"
+            header_text="password"
+            input_type="password"
+            input_value={password}
+            input_on_change_callback={set_password}
+            input_name="auth_form_password"
+            input_placeholder="enter your password"
+         />
+         <hr className="h-[1px] bg-secondary-low-opacity my-m-em-l " />
+         <div className="form_submit w-full h-full justify-center items-center mb-m-em-s">
+            <button className="text-secondary  transition-hover-base w-full h-[48px] bg-main rounded-[6px] hover:bg-main-alt relative">
+               <p className="absolute w-full h-full translate-y-[-25%] ">
+                  Register
+               </p>
+            </button>
+         </div>
+      </form>
    );
 }

@@ -29,6 +29,8 @@ function get_style_sheet(pathname: string): string {
          return "home/home.css";
       case "/booking":
          return "booking/booking.css";
+      case "/register":
+         return "shared/auth_page.css";
       default:
          return "shared/global.css";
    }
