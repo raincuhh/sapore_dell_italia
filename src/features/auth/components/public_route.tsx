@@ -4,7 +4,9 @@ import { use_auth } from "../lib/auth_utils";
 
 type PublicRouteProps = PropsWithChildren;
 
-export default function PublicRoute({ children }: PublicRouteProps) {
+export default function PublicRoute({
+   children,
+}: PublicRouteProps): JSX.Element {
    const user = use_auth();
    const navigate = useNavigate();
    return <>{children}</>;

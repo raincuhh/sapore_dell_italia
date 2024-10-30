@@ -6,14 +6,16 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-type NavbarProps = { user_type: UserRoles; is_logged_in?: boolean };
+type NavbarProps = { user_type?: UserRoles; is_logged_in?: boolean };
 
 export default function Navbar({ user_type, is_logged_in }: NavbarProps) {
    return (
-      <nav id="navbar">
+      <nav id="navbar flex">
          <div className="nav_cont">
             <div className="nav_in_cont">
-               <nav className="nav"></nav>
+               <nav className="nav">
+                  <header className="flex">awd</header>
+               </nav>
             </div>
          </div>
       </nav>

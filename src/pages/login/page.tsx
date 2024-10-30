@@ -1,3 +1,12 @@
+import PageLayout from "../../shared/components/page_layout";
+import LoginForm from "../../features/auth/components/login_form";
+
 export default function PageLogin() {
-   return <div>Login</div>;
+   return (
+      <>
+         <PageLayout>
+            <LoginForm />
+         </PageLayout>
+      </>
+   );
 }

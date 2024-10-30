@@ -5,7 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "splitting/dist/splitting.css";
 import "splitting/dist/splitting-cells.css";
 import Splitting from "splitting";
-import HomeCategoryLayout from "./home_category_layout";
+import CategoryLayout from "../../shared/components/category_layout";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -33,7 +33,7 @@ export default function ShortAbout(): JSX.Element {
          className="category category_short_about"
          ref={ref_category_short_about}
       >
-         <HomeCategoryLayout inner_name="in_cont_short_about">
+         <CategoryLayout inner_name="in_cont_short_about">
             <section className="short_about">
                <div className="short_about_paragraph">
                   <p ref={ref_paragraph}>
@@ -45,7 +45,7 @@ export default function ShortAbout(): JSX.Element {
                   </p>
                </div>
             </section>
-         </HomeCategoryLayout>
+         </CategoryLayout>
          <div className="short_about_thumbnail mt-m-em-xs w-[100vw] flex relative justify-center items-center">
             <div className="short_about_thumbnail_centered w-[100%] flex relative justify-center items-center">
                <div

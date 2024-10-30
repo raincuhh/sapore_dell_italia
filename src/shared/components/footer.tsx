@@ -1,3 +1,3 @@
 export default function Footer(): JSX.Element {
-   return <section>footer</section>;
+   return <section className="category category_footer">footer</section>;
 }

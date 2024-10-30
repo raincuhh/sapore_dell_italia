@@ -1,3 +1,12 @@
+import PageLayout from "../../shared/components/page_layout";
+import RegisterForm from "../../features/auth/components/register_form";
+
 export default function PageRegister() {
-   return <div>Register</div>;
+   return (
+      <>
+         <PageLayout>
+            <RegisterForm />
+         </PageLayout>
+      </>
+   );
 }

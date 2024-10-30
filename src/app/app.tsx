@@ -2,8 +2,9 @@ import { useEffect } from "react";
 import { RouterProvider } from "react-router-dom";
 import { router } from "./routers/router";
 import AuthProvider from "../features/auth/components/auth_provider";
+import "./styles/shared/global.css";
 
-export default function App() {
+export default function App(): JSX.Element {
    useEffect(() => {
       const sheet_path: string = get_style_sheet(location.pathname);
       import(`./styles/${sheet_path}`)
@@ -15,7 +16,7 @@ export default function App() {
 
    return (
       <div className="app">
-         <AuthProvider is_logged_in={true}>
+         <AuthProvider is_logged_in={false}>
             <RouterProvider router={router} />
          </AuthProvider>
       </div>

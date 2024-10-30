@@ -1,11 +1,11 @@
 import { PropsWithChildren } from "react";
 
-type HomeCategoryLayoutProps = PropsWithChildren & { inner_name?: string };
+type CategoryLayoutProps = PropsWithChildren & { inner_name?: string };
 
-export default function HomeCategoryLayout({
+export default function CategoryLayout({
    children,
    inner_name,
-}: HomeCategoryLayoutProps): JSX.Element {
+}: CategoryLayoutProps): JSX.Element {
    return (
       <div className="mx-auto max-w-max-width px-[1rem]">
          <div className="mx-[-0.2rem]">

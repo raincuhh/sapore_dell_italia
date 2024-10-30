@@ -1,5 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Route, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
+import {
+   BrowserRouter as Router,
+   Route,
+   createBrowserRouter,
+   createRoutesFromElements,
+} from "react-router-dom";
 import ProtectedRoute from "../../features/auth/components/protected_route";
 import PublicRoute from "../../features/auth/components/public_route";
 import AuthRoute from "../../features/auth/components/auth_route";
@@ -10,6 +15,7 @@ import PageRegister from "../../pages/register/page";
 import PageLogin from "../../pages/login/page";
 import PageUser from "../../pages/user/page";
 import PageAdminDashboard from "../../pages/admin_dashboard/page";
+import Navbar from "../../shared/components/navbar";
 
 const routes = createRoutesFromElements(
    <>

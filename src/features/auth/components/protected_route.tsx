@@ -6,7 +6,9 @@ import { is_logged_in } from "../../users/lib/perms";
 
 type ProtectedRouteProps = PropsWithChildren;
 
-export default function ProtectedRoute({ children }: ProtectedRouteProps) {
+export default function ProtectedRoute({
+   children,
+}: ProtectedRouteProps): JSX.Element {
    const user: User | null = use_auth();
    const navigate = useNavigate();
 

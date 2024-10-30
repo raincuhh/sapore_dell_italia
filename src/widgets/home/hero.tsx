@@ -1,9 +1,9 @@
-import HomeCategoryLayout from "./home_category_layout";
+import CategoryLayout from "../../shared/components/category_layout";
 
 export default function Hero(): JSX.Element {
    return (
       <section className="category category_hero">
-         <HomeCategoryLayout inner_name="in_cont_hero">
+         <CategoryLayout inner_name="in_cont_hero">
             <section className="hero">
                <div className="hero_container flex w-full justify-center place-content-center overflow-hidden items-center relative gap-m-em-xs h-[594px]">
                   <header className="hero_title flex-nowrap flex flex-col justify-end gap-m-em-s h-[32px]">
@@ -59,7 +59,7 @@ export default function Hero(): JSX.Element {
                   </div>
                </div>
             </section>
-         </HomeCategoryLayout>
+         </CategoryLayout>
       </section>
    );
 }

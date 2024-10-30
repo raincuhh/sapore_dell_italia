@@ -5,7 +5,7 @@ import { is_logged_in } from "../../users/lib/perms";
 
 type AuthRouteProps = PropsWithChildren;
 
-export default function AuthRoute({ children }: AuthRouteProps) {
+export default function AuthRoute({ children }: AuthRouteProps): JSX.Element {
    const user = use_auth();
    const navigate = useNavigate();
 
