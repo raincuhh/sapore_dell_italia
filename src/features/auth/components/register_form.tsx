@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import AuthFormInput from "./auth_form_input";
 import { register } from "../api";
 
-export default function RegisterForm() {
+export default function RegisterForm(): JSX.Element {
    const [username, set_username] = useState("");
    const [password, set_password] = useState("");
    const [email, set_email] = useState("");
@@ -22,7 +22,7 @@ export default function RegisterForm() {
    const handle_response = async (response: any) => {
       console.log(response);
       if (response.message === "registration successful") {
-         navigate("/user");
+         navigate("/login");
       } else {
          console.error(
             "Registration Failed: ",

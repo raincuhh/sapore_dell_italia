@@ -7,7 +7,7 @@ type AuthProviderProps = PropsWithChildren & { is_logged_in?: boolean };
 export default function AuthProvider({
    children,
    is_logged_in,
-}: AuthProviderProps) {
+}: AuthProviderProps): JSX.Element {
    // replace the true ternary statement part when i have an actual way of getting user creds
    const [user] = useState<User | null>(
       is_logged_in

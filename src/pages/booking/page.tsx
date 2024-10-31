@@ -1,3 +1,3 @@
-export default function PageBooking() {
+export default function PageBooking(): JSX.Element {
    return <div>Booking</div>;
 }

@@ -1,3 +1,3 @@
-export default function PageUser() {
+export default function PageUser(): JSX.Element {
    return <div>user details</div>;
 }

@@ -3,19 +3,19 @@ import RegisterForm from "../../features/auth/components/register_form";
 import CategoryLayout from "../../shared/components/category_layout";
 import { Link } from "react-router-dom";
 
-export default function PageRegister() {
+export default function PageRegister(): JSX.Element {
    return (
       <>
          <PageLayout>
             <CategoryLayout>
                <section className="auth_form flex flex-col h-full justify-center items-center">
-                  <div className="auth_form_container md:max-w-[700px]">
+                  <div className="auth_form_container w-full md:max-w-[400px]">
                      <header className="flex w-full text-fs-m md:text-fs-l">
                         <p>Register</p>
                      </header>
                      <RegisterForm />
 
-                     <div className="w-full flex flex-row gap-2">
+                     <div className="flex flex-row gap-2 w-full justify-center">
                         <p className="text-secondary-low-opacity">
                            Have an account?
                         </p>
