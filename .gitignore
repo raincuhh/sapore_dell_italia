@@ -142,3 +142,5 @@ dist/
 out/
 
 bootstrap_superadmin.php
+
+/vendor/

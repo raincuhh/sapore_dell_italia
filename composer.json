@@ -1,0 +1,21 @@
+{
+    "name": "filip/sapore_dell_italia",
+    "description": "An e-commerce fullstack php, typscript, react, node, mysql school project about a restaurant with booking.",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Filip\\SaporeDellItalia\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "raincuhh",
+            "email": "146904648+raincuhh@users.noreply.github.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "firebase/php-jwt": "^6.10"
+    }
+}

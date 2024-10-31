@@ -13,6 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 }
 
 require "../../../shared/lib/utils.php";
+require "gen_jwt_token.php";
 $conn = get_sql_connection();
 
 $data = json_decode(file_get_contents("php://input"));
@@ -30,7 +31,7 @@ try {
 
   if ($user && password_verify($password, $user["password"])) {
     http_response_code(200);
-    echo json_encode(["message" => "login successful", "user" => $user]);
+    echo json_encode(["message" => "login successful", "awdwadaadaw" => "sigma"/*, "user" => $user*/]);
   } else {
     http_response_code(400);
     echo json_encode(["message" => "login failed"]);
