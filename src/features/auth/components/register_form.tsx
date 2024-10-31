@@ -32,7 +32,11 @@ export default function RegisterForm() {
    };
 
    return (
-      <form name="auth_form flex flex-col" onSubmit={handle_form_submit}>
+      <form
+         name="auth_form"
+         className="flex flex-col w-full"
+         onSubmit={handle_form_submit}
+      >
          <hr className="h-[1px] bg-secondary-low-opacity mb-m-em-l mt-m-em-m" />
          <AuthFormInput
             cont_name="form_username"

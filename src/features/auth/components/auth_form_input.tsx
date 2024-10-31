@@ -17,7 +17,7 @@ export default function AuthFormInput({
    input_placeholder,
 }: AuthFormInputProps) {
    return (
-      <div className={"flex flex-col"}>
+      <div className={"flex flex-col gap-[0.2rem]"}>
          <header>
             <p className="text-fs-s">{header_text}</p>
          </header>

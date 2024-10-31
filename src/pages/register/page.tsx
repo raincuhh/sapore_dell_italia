@@ -9,13 +9,13 @@ export default function PageRegister() {
          <PageLayout>
             <CategoryLayout>
                <section className="auth_form flex flex-col h-full justify-center items-center">
-                  <div className="auth_form_container md:max-w-[512px]">
-                     <header className="flex w-full justify-center text-fs-m md:text-fs-l">
-                        <p>Register to Sapore Dell Italia</p>
+                  <div className="auth_form_container md:max-w-[700px]">
+                     <header className="flex w-full text-fs-m md:text-fs-l">
+                        <p>Register</p>
                      </header>
                      <RegisterForm />
 
-                     <div className="flex flex-row gap-2">
+                     <div className="w-full flex flex-row gap-2">
                         <p className="text-secondary-low-opacity">
                            Have an account?
                         </p>
