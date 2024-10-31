@@ -16,7 +16,7 @@ export default function App(): JSX.Element {
 
    return (
       <div className="app">
-         <AuthProvider is_logged_in={false}>
+         <AuthProvider>
             <RouterProvider router={router} />
          </AuthProvider>
       </div>

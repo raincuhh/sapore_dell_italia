@@ -6,6 +6,6 @@ export function is_admin(user: User): boolean {
 }
 
 // placeholder for checking if user is logged in
-export function is_logged_in(user: User | null): boolean {
+export function is_authenticated(user: User | null): boolean {
    return user !== null;
 }
