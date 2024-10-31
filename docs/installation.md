@@ -45,7 +45,7 @@ Make sure you have the following installed on your system:
    ```
 
 6. **Start WAMP**
-   Launch the WampServer. Ensure that the server is running, as it is required to handle the PHP endpoints for your application.
+   Launch the WampServer. Ensure that the server is running, as it is required to handle the PHP endpoints for the application.
 
 7. **Access the Application**
    Open your web browser and navigate to:
