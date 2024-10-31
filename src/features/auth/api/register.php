@@ -4,7 +4,6 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type");
 header('Content-Type: application/json');
-header('Access-Control-Allow-Origin');
 
 require "../../../shared/lib/utils.php";
 $conn = get_sql_connection();
@@ -15,8 +14,9 @@ $username = $data->username;
 $password = password_hash($data->password, PASSWORD_BCRYPT);
 $email = $data->email;
 
+$stmt = $conn->prepare("INSERT INTO users (name, password, email) VALUES (?, ?, ?)");
+
 try {
-  $stmt = $conn->prepare("INSERT INTO users (name, password, email) VALUES (?, ?, ?)");
   $stmt->bind_param("sss", $username, $password, $email);
 
   if ($stmt->execute()) {

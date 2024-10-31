@@ -1,6 +1,6 @@
 import React, { PropsWithChildren, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { use_auth } from "../lib/auth_utils";
+import { use_auth } from "../lib/utils";
 
 type PublicRouteProps = PropsWithChildren;
 

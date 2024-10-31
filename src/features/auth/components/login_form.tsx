@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AuthFormInput from "./auth_form_input";
-import { login } from "../api";
+import { use_auth } from "../lib/utils";
 
 export default function LoginForm(): JSX.Element {
+   const { login } = use_auth();
+
    const [username, set_username] = useState("");
    const [password, set_password] = useState("");
    const navigate = useNavigate();

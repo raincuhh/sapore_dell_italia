@@ -5,7 +5,7 @@ import ShortAbout from "../../widgets/home/short_about";
 import RecommendedCatalog from "../../widgets/home/recommended_catalog";
 import LongAbout from "../../widgets/home/long_about";
 import Navbar from "../../shared/components/navbar";
-import { use_auth } from "../../features/auth/lib/auth_utils";
+import { use_auth } from "../../features/auth/lib/utils";
 import { is_authenticated } from "../../features/users/lib/perms";
 
 export default function PageHome(): JSX.Element {

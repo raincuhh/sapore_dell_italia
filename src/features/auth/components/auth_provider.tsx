@@ -1,6 +1,6 @@
 import React, { PropsWithChildren, useState, useEffect } from "react";
 import { User, UserRoles } from "../../users/lib/types";
-import { AuthContext } from "../lib/auth_utils";
+import { AuthContext } from "../lib/utils";
 import { login as api_login } from "../api";
 
 type AuthProviderProps = PropsWithChildren; //& { is_authenticated: boolean };
@@ -17,10 +17,12 @@ export default function AuthProvider({
 
    const login = async (username: string, password: string) => {
       try {
-         const user_data = await api_login(username, password);
-         set_user(user_data);
+         const response = await api_login(username, password);
+         set_user(response);
          set_is_authenticated(true);
          //make token maybe?
+         console.log("userdata: ", user, "authenticated: ", is_authenticated);
+         return response;
       } catch (err) {
          console.error("login failed: ", err);
       }

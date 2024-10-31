@@ -1,5 +1,5 @@
 import React, { PropsWithChildren, useEffect } from "react";
-import { use_auth } from "../lib/auth_utils";
+import { use_auth } from "../lib/utils";
 import { useNavigate } from "react-router-dom";
 import { User } from "../../users/lib/types";
 import { is_authenticated } from "../../users/lib/perms";
