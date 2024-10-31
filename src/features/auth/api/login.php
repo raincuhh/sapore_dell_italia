@@ -7,15 +7,15 @@ header("Access-Control-Allow-Headers: Content-Type, Authorization");
 header("Content-Type: application/json");
 
 
-if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+if ($_SERVER["REQUEST_METHOD"] === "OPTIONS") {
   http_response_code(200);
   exit;
 }
 
 require "../../../shared/lib/utils.php";
 require "gen_jwt_token.php";
-$conn = get_sql_connection();
 
+$conn = get_sql_connection();
 $data = json_decode(file_get_contents("php://input"));
 
 $username = $data->username;
@@ -31,7 +31,7 @@ try {
 
   if ($user && password_verify($password, $user["password"])) {
     http_response_code(200);
-    echo json_encode(["message" => "login successful", "awdwadaadaw" => "sigma"/*, "user" => $user*/]);
+    echo json_encode(["message" => "login successful"/*, "user" => $user*/]);
   } else {
     http_response_code(400);
     echo json_encode(["message" => "login failed"]);

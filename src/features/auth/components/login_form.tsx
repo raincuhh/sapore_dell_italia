@@ -59,7 +59,7 @@ export default function LoginForm(): JSX.Element {
          <div className="form_submit w-full h-full justify-center items-center mb-m-em-s">
             <button className="text-secondary  transition-hover-base w-full h-[48px] bg-main rounded-[6px] hover:bg-main-alt relative">
                <p className="absolute w-full h-full translate-y-[-25%] ">
-                  Register
+                  Login
                </p>
             </button>
          </div>

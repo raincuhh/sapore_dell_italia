@@ -18,10 +18,10 @@ function get_sql_connection(): bool|mysqli
   load_env(__DIR__ . "/../../../.env");
 
   $sql_connection = mysqli_connect(
-    getenv('DB_HOST'),
-    getenv('DB_USER'),
-    getenv('DB_PASS'),
-    getenv('DB_NAME')
+    getenv("DB_HOST"),
+    getenv("DB_USER"),
+    getenv("DB_PASS"),
+    getenv("DB_NAME")
   );
 
   if ($sql_connection->connect_error) {

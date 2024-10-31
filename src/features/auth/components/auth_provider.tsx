@@ -1,9 +1,9 @@
-import React, { PropsWithChildren, useState, useEffect } from "react";
-import { User, UserRoles } from "../../users/lib/types";
+import { PropsWithChildren, useState, useEffect } from "react";
+import { User } from "../../users/lib/types";
 import { AuthContext } from "../lib/utils";
 import { login as api_login } from "../api";
 
-type AuthProviderProps = PropsWithChildren; //& { is_authenticated: boolean };
+type AuthProviderProps = PropsWithChildren;
 
 export default function AuthProvider({
    children,
