@@ -1,7 +1,6 @@
 <?php
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 header("Access-Control-Allow-Origin: http://localhost:3000");
-//header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type");
 header('Content-Type: application/json');
 
@@ -17,7 +16,7 @@ $email = $data->email;
 $stmt = $conn->prepare("INSERT INTO users (name, password, email) VALUES (?, ?, ?)");
 
 try {
-  $stmt->bind_param("sss", $username, $password, $email);
+  $stmt->bindParam("sss", $username, $password, $email);
 
   if ($stmt->execute()) {
     http_response_code(200);
@@ -29,7 +28,8 @@ try {
 } catch (mysqli_sql_exception $err) {
   http_response_code(500);
   echo json_encode(["message" => "registration failed", "error" => $err->getMessage()]);
-}
+} finally {
+  $stmt = null;
+  $conn = null;
 
-$stmt->close();
-$conn->close();
+}

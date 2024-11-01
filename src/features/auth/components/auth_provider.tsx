@@ -18,13 +18,24 @@ export default function AuthProvider({
    useEffect(() => {
       if (jwt_token) {
          const decoded = jwtDecode(jwt_token);
+         console.log(decoded);
       }
    }, [jwt_token]);
+
+   const init_jwt_token_decoding = (jwt_token_str: string) => {
+      try {
+         let decoded = jwtDecode(jwt_token_str);
+      } catch (err) {
+         console.error("login failed: ", err);
+      }
+   };
 
    const login = async (username: string, password: string) => {
       try {
          const response = await api_login(username, password);
          console.log(response);
+         //console.log(jwtDecode(response.jwt_token));
+
          //set_is_authenticated(true);
          return response;
       } catch (err) {
@@ -37,7 +48,9 @@ export default function AuthProvider({
    };
 
    return (
-      <AuthContext.Provider value={{ is_authenticated, login, logout }}>
+      <AuthContext.Provider
+         value={{ jwt_token, is_authenticated, login, logout }}
+      >
          {children}
       </AuthContext.Provider>
    );

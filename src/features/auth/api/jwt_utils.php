@@ -38,16 +38,15 @@ function increment_jwt_version($user_id): void
   }
 }
 
-function validate_jwt_token($jwt_token)
+function decode_and_validate_token($jwt_token)
 {
   global $conn;
   $secret_key = getenv("DB_JWT_SUPER_SECRET_KEY");
 
   try {
-    // first decoding the jwt
     $decoded_jwt_token = JWT::decode($jwt_token, new Key($secret_key, "HS256"));
 
-    // checking the exp if its expired (jwt->exp < time())
+    // checking the payload to see if its expired (jwt->exp < time())
     if (is_token_expired($decoded_jwt_token)) {
       http_response_code(401);
       echo json_encode(["message" => "token has expired"]);
@@ -57,8 +56,7 @@ function validate_jwt_token($jwt_token)
     // preparing to execute the query to get user
     $stmt = $conn->prepare("SELECT * FROM users WHERE user_id = ?");
     $stmt->execute([$decoded_jwt_token->id]);
-    $result = $stmt->get_result();
-    $user = $result->fetch_assoc();
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
     // checking if user exists
     if (!$user) {
@@ -83,7 +81,6 @@ function validate_jwt_token($jwt_token)
     echo json_encode(["message" => "invalid token"]);
   }
 }
-
 
 function is_token_expired($decoded_jwt_token): bool
 {

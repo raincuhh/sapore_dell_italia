@@ -13,10 +13,24 @@ function load_env($file): void
   }
 }
 
-function get_sql_connection(): bool|mysqli
+function get_sql_connection()
 {
   load_env(__DIR__ . "/../../../.env");
+  $dsn = "pgsql:host=" . getenv("DB_HOST") . ";dbname=" . getenv("DB_NAME");
+  $username = getenv("DB_USER");
+  $password = getenv("DB_PASS");
 
+  try {
+    $pdo = new PDO($dsn, $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    return $pdo;
+  } catch (PDOException $e) {
+    echo "Error: Could not connect to the database. " . $e->getMessage();
+    return false;
+  }
+
+  // old sql connection way, im using postgresql now though so cant
+  /*
   $sql_connection = mysqli_connect(
     getenv("DB_HOST"),
     getenv("DB_USER"),
@@ -29,4 +43,20 @@ function get_sql_connection(): bool|mysqli
     return false;
   }
   return $sql_connection;
+  */
+}
+
+function get_ip(): array|bool|string
+{
+  $ip = "";
+  if (getenv("HTTP_CLIENT_IP"))
+    $ip = getenv("HTTP_CLIENT_IP");
+  else if (getenv("HTTP_X_FORWARDED_FOR"))
+    $ip = getenv("HTTP_X_FORWARDED_FOR");
+  else if (getenv("REMOTE_ADDR"))
+    $ip = getenv("REMOTE_ADDR");
+  else
+    $ip = "UNKNOWN";
+  return $ip;
+
 }

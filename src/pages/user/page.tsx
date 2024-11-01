@@ -1,3 +1,5 @@
+import PageLayout from "../../shared/components/page_layout";
+
 export default function PageUser(): JSX.Element {
-   return <div>user details</div>;
+   return <PageLayout>logged in</PageLayout>;
 }
