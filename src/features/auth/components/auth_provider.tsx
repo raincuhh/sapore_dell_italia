@@ -1,27 +1,31 @@
 import { PropsWithChildren, useState, useEffect } from "react";
-import { User } from "../../users/lib/types";
+import { User, UserRoles } from "../../users/lib/types";
 import { AuthContext } from "../lib/utils";
 import { login as api_login } from "../api";
+import { jwtDecode } from "jwt-decode";
 
 type AuthProviderProps = PropsWithChildren;
 
 export default function AuthProvider({
    children,
 }: AuthProviderProps): JSX.Element {
-   const [user, set_user] = useState<User | null>(null);
+   const [jwt_token, set_jwt_token_] = useState(
+      localStorage.getItem("jwt_token")
+   );
    const [is_authenticated, set_is_authenticated] = useState(false);
+   const [role, set_role] = useState(UserRoles.user);
 
    useEffect(() => {
-      console.log("awdawdadw");
-   }, []);
+      if (jwt_token) {
+         const decoded = jwtDecode(jwt_token);
+      }
+   }, [jwt_token]);
 
    const login = async (username: string, password: string) => {
       try {
          const response = await api_login(username, password);
-         set_user(response);
-         set_is_authenticated(true);
-         //make token maybe?
-         console.log("userdata: ", user, "authenticated: ", is_authenticated);
+         console.log(response);
+         //set_is_authenticated(true);
          return response;
       } catch (err) {
          console.error("login failed: ", err);
@@ -29,13 +33,11 @@ export default function AuthProvider({
    };
 
    const logout = async () => {
-      // TODO, invalidate active tokens when session/token implementation is done
-      set_user(null);
       set_is_authenticated(false);
    };
 
    return (
-      <AuthContext.Provider value={{ user, is_authenticated, login, logout }}>
+      <AuthContext.Provider value={{ is_authenticated, login, logout }}>
          {children}
       </AuthContext.Provider>
    );

@@ -13,7 +13,7 @@ export type User = {
 };
 
 export type AuthContextProps = {
-   user: User | null;
+   //user: User | null;
    is_authenticated: boolean;
    login: (username: string, password: string) => Promise<void>;
    logout: () => void;

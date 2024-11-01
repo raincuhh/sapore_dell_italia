@@ -2,21 +2,22 @@ import React, { PropsWithChildren, useEffect } from "react";
 import { use_auth } from "../lib/utils";
 import { useNavigate } from "react-router-dom";
 import { User } from "../../users/lib/types";
-import { is_authenticated } from "../../users/lib/perms";
 
 type ProtectedRouteProps = PropsWithChildren;
 
 export default function ProtectedRoute({
    children,
 }: ProtectedRouteProps): JSX.Element {
-   const { user } = use_auth();
+   const { is_authenticated } = use_auth();
    const navigate = useNavigate();
 
    useEffect(() => {
-      if (!is_authenticated(user)) {
+      /*
+      if (!is_authenticated) {
          navigate("/login", { replace: true });
       }
-   }, [user, navigate]);
+         */
+   }, [is_authenticated, navigate]);
 
    return <>{children}</>;
 }

@@ -6,18 +6,11 @@ import RecommendedCatalog from "../../widgets/home/recommended_catalog";
 import LongAbout from "../../widgets/home/long_about";
 import Navbar from "../../shared/components/navbar";
 import { use_auth } from "../../features/auth/lib/utils";
-import { is_authenticated } from "../../features/users/lib/perms";
 
 export default function PageHome(): JSX.Element {
-   const { user } = use_auth();
-
    return (
       <>
          <PageLayout>
-            <Navbar
-               user_type={user?.role}
-               is_authenticated={is_authenticated(user)}
-            />
             <Hero />
             <ShortAbout />
             <RecommendedCatalog />

@@ -1,7 +1,8 @@
 <?php
-require "../../../shared/lib/utils.php";
+require_once "../../../shared/lib/utils.php";
 require_once "../../../../vendor/autoload.php";
 
+use Firebase\JWT\ExpiredException;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 
@@ -11,14 +12,14 @@ function gen_jwt_token($user): string
 {
   $secret_key = getenv("DB_JWT_SUPER_SECRET_KEY");
   $payload = [
-    "id" => $user["id"],
+    "id" => $user["user_id"],
     "role" => $user["role"],
     "jwt_version" => $user["jwt_version"],
-    "exp" => time() + 1800, // 30 min btw
+    "exp" => time() + 7200, // 2 hours btw
   ];
 
-  $jwt = JWT::encode($payload, $secret_key, "HS256");
-  return $jwt;
+  $jwt_token = JWT::encode($payload, $secret_key, "HS256");
+  return $jwt_token;
 }
 
 function increment_jwt_version($user_id): void
@@ -41,21 +42,57 @@ function validate_jwt_token($jwt_token)
 {
   global $conn;
   $secret_key = getenv("DB_JWT_SUPER_SECRET_KEY");
+
   try {
-    $decoded = JWT::decode($jwt_token, new Key($secret_key, "HS256"));
+    // first decoding the jwt
+    $decoded_jwt_token = JWT::decode($jwt_token, new Key($secret_key, "HS256"));
+
+    // checking the exp if its expired (jwt->exp < time())
+    if (is_token_expired($decoded_jwt_token)) {
+      http_response_code(401);
+      echo json_encode(["message" => "token has expired"]);
+      return null;
+    }
+
+    // preparing to execute the query to get user
     $stmt = $conn->prepare("SELECT * FROM users WHERE user_id = ?");
-    $stmt->execute([$decoded->id]);
+    $stmt->execute([$decoded_jwt_token->id]);
     $result = $stmt->get_result();
     $user = $result->fetch_assoc();
 
-    if ($user && $user["jwt_version"] == $jwt_token) {
-      return $decoded;
-    } else {
-      http_response_code(401);
-      echo json_encode(["error" => "token version is outdated or invalid"]);
+    // checking if user exists
+    if (!$user) {
+      http_response_code(400);
+      echo json_encode(["message" => "fetching user failed"]);
     }
 
-  } catch (mysqli_sql_exception $err) {
-    echo json_encode(["error" => $err->getMessage()]);
+    // checking if usr exists and jwt versions match
+    if ($user && $user["jwt_version"] == $jwt_token) {
+      return $decoded_jwt_token; // valid
+    } else {
+      http_response_code(401);
+      echo json_encode(["message" => "token version is outdated or invalid"]);
+      return null;
+    }
+
+  } catch (ExpiredException $err) {
+    http_response_code(401);
+    echo json_encode(["message" => "token has expired", "error" => $err->getMessage()]);
+  } catch (Exception $err) {
+    http_response_code(401);
+    echo json_encode(["message" => "invalid token"]);
+  }
+}
+
+
+function is_token_expired($decoded_jwt_token): bool
+{
+  global $conn;
+  $jwt_exp = $decoded_jwt_token->exp;
+
+  if ($jwt_exp === null || $jwt_exp < time()) {
+    return false;
+  } else {
+    return true;
   }
 }

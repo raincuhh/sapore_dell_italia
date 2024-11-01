@@ -21,7 +21,6 @@ export default function LoginForm(): JSX.Element {
    };
 
    const handle_response = async (response: any) => {
-      console.log(response);
       if (response.message === "login successful") {
          navigate("/user");
       } else {

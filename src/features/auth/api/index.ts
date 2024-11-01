@@ -1,4 +1,5 @@
 import axios, { AxiosResponse } from "axios";
+import { axios_instance } from "../../../shared/lib/axios_instance";
 
 export async function register(
    username: string,
@@ -6,8 +7,8 @@ export async function register(
    email: string
 ) {
    try {
-      const response: AxiosResponse<any, any> = await axios.post(
-         "http://localhost/sapore_dell_italia/src/features/auth/api/register.php",
+      const response: AxiosResponse<any, any> = await axios_instance.post(
+         "/src/features/auth/api/register.php",
          {
             username,
             password,
@@ -23,8 +24,8 @@ export async function register(
 
 export async function login(username: string, password: string) {
    try {
-      const response: AxiosResponse<any, any> = await axios.post(
-         "http://localhost/sapore_dell_italia/src/features/auth/api/login.php",
+      const response: AxiosResponse<any, any> = await axios_instance.post(
+         "/src/features/auth/api/login.php",
          {
             username,
             password,
