@@ -6,7 +6,7 @@ use Firebase\JWT\ExpiredException;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 
-$conn = get_sql_connection();
+$conn = get_db_connection();
 
 function gen_jwt_token($user): string
 {

@@ -13,37 +13,29 @@ function load_env($file): void
   }
 }
 
-function get_sql_connection()
+function get_db_connection(): bool|PDO
 {
   load_env(__DIR__ . "/../../../.env");
-  $dsn = "pgsql:host=" . getenv("DB_HOST") . ";dbname=" . getenv("DB_NAME");
-  $username = getenv("DB_USER");
-  $password = getenv("DB_PASS");
+  echo extension_loaded('pgsql') ? 'yes' : 'no';
+  echo "> ";
+
+  $db_host = getenv("DB_HOST");
+  $db_port = getenv("DB_PORT");
+  $db_name = getenv("DB_NAME");
+  $db_user = getenv("DB_USER");
+  $db_pass = getenv("DB_PASS");
 
   try {
-    $pdo = new PDO($dsn, $username, $password);
+    $dns = sprintf("pgsql:host=%s;port=%d;dbname=%s;user=%s;password=%s", $db_host, $db_port, $db_name, $db_user, $db_pass);
+    $pdo = new \PDO($dns);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
     return $pdo;
   } catch (PDOException $e) {
     echo "Error: Could not connect to the database. " . $e->getMessage();
+
     return false;
   }
-
-  // old sql connection way, im using postgresql now though so cant
-  /*
-  $sql_connection = mysqli_connect(
-    getenv("DB_HOST"),
-    getenv("DB_USER"),
-    getenv("DB_PASS"),
-    getenv("DB_NAME")
-  );
-
-  if ($sql_connection->connect_error) {
-    echo "Error: Something went wrong: " . $sql_connection->connect_error;
-    return false;
-  }
-  return $sql_connection;
-  */
 }
 
 function get_ip(): array|bool|string
@@ -57,6 +49,6 @@ function get_ip(): array|bool|string
     $ip = getenv("REMOTE_ADDR");
   else
     $ip = "UNKNOWN";
-  return $ip;
 
+  return $ip;
 }

@@ -5,7 +5,7 @@ header("Access-Control-Allow-Headers: Content-Type");
 header('Content-Type: application/json');
 
 require "../../../shared/lib/utils.php";
-$conn = get_sql_connection();
+$conn = get_db_connection();
 
 $data = json_decode(file_get_contents("php://input"));
 
@@ -13,10 +13,11 @@ $username = $data->username;
 $password = password_hash($data->password, PASSWORD_BCRYPT);
 $email = $data->email;
 
-$stmt = $conn->prepare("INSERT INTO users (name, password, email) VALUES (?, ?, ?)");
-
 try {
-  $stmt->bindParam("sss", $username, $password, $email);
+  $stmt = $conn->prepare("INSERT INTO users (name, password, email) VALUES (:username, :password, :email)");
+  $stmt->bindParam(":username", $username, PDO::PARAM_STR);
+  $stmt->bindParam(":email", $email, PDO::PARAM_STR);
+  $stmt->bindParam(":password", $password, PDO::PARAM_STR);
 
   if ($stmt->execute()) {
     http_response_code(200);
@@ -31,5 +32,4 @@ try {
 } finally {
   $stmt = null;
   $conn = null;
-
 }
