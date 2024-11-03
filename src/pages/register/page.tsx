@@ -30,7 +30,7 @@ export default function PageRegister(): JSX.Element {
                         </p>
                         <Link to={"/login"}>
                            <p className="hover:text-main hover:underline">
-                              Login here
+                              Login
                            </p>
                         </Link>
                      </div>

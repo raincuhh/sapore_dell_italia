@@ -1,23 +1,26 @@
 import React, { PropsWithChildren, useEffect } from "react";
 import { use_auth } from "../lib/utils";
-import { useNavigate } from "react-router-dom";
-import { User } from "../../users/lib/types";
+import { useLocation, useNavigate } from "react-router-dom";
 
 type ProtectedRouteProps = PropsWithChildren;
 
 export default function ProtectedRoute({
    children,
 }: ProtectedRouteProps): JSX.Element {
-   const { is_authenticated } = use_auth();
+   const { is_authenticated, loading } = use_auth();
    const navigate = useNavigate();
+   const location = useLocation();
 
    useEffect(() => {
-      /*
+      // redirect to /login path if user isnt authenticated, otherwise dont do anythng
       if (!is_authenticated) {
-         navigate("/login", { replace: true });
+         localStorage.setItem("redirect_path", location.pathname);
+         navigate("/login", {
+            replace: true,
+            state: { from: location.pathname },
+         });
       }
-         */
-   }, [is_authenticated, navigate]);
+   }, [is_authenticated, navigate, loading, location.pathname]);
 
    return <>{children}</>;
 }

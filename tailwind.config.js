@@ -12,7 +12,7 @@ module.exports = {
             main: "rgba(221, 147, 102, 1)",
             "main-alt": "rgba(221, 147, 102, 0.8)",
             secondary: "rgba(240, 232, 227, 1)",
-            "secondary-low-opacity": "rgba(240, 232, 227, 0.1)",
+            "secondary-low-opacity": "rgba(240, 232, 227, 0.2)",
             "secondary-middle-opacity": "rgba(240, 232, 227, 0.3)",
             "secondary-alt": "rgba(229, 222, 217, 1)",
             tertiary: "rgba(237, 225, 218, 1)",

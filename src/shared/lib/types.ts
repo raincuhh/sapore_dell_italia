@@ -13,9 +13,10 @@ export type User = {
 };
 
 export type AuthContextProps = {
-   //user: User | null;
    jwt_token: string | null;
    is_authenticated: boolean;
+   role: UserRoles;
    login: (username: string, password: string) => Promise<void>;
    logout: () => void;
+   loading: boolean;
 };

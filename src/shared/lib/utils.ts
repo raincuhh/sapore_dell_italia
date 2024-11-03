@@ -1,3 +1,5 @@
+import { UserRoles } from "./types";
+
 export function create_uuid(): string {
    let pattern: string = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx";
    let result: string = "";
@@ -31,4 +33,15 @@ export function uppercaseify_sentences(str: string): string {
       words[i] = uppercaseify(word);
    });
    return words.join(" ");
+}
+
+export function role_str_to_role_enum(str: string): UserRoles {
+   switch (str) {
+      case UserRoles.admin:
+         return UserRoles.admin;
+      case UserRoles.user:
+         return UserRoles.user;
+      default:
+         return UserRoles.user;
+   }
 }

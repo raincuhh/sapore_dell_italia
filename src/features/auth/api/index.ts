@@ -15,9 +15,9 @@ export async function register(
             email,
          }
       );
-      return response.data;
+      return response;
    } catch (err) {
-      console.error(err);
+      console.error("Error: ", err);
       throw new Error("Registration failed");
    }
 }
@@ -31,9 +31,22 @@ export async function login(username: string, password: string) {
             password,
          }
       );
-      return response.data;
+      return response;
    } catch (err) {
-      console.error(err);
-      throw new Error("Registration failed");
+      console.error("Error: ", err);
+      throw new Error("Login failed");
+   }
+}
+
+export async function validate_jwt_token(jwt_token: string) {
+   try {
+      const response: AxiosResponse<any, any> = await axios_instance.get(
+         "/src/features/auth/api/validate_jwt_token.php",
+         { params: { jwt_token } }
+      );
+      return response;
+   } catch (err) {
+      console.error("Error: ", err);
+      throw new Error("Validation failed");
    }
 }

@@ -15,19 +15,16 @@ export default function RegisterForm(): JSX.Element {
          const response: any = await register(username, password, email);
          handle_response(response);
       } catch (err) {
-         console.error("Error registering: ", err);
+         console.error("Error: ", err);
       }
    };
 
    const handle_response = async (response: any) => {
       console.log(response);
-      if (response.message === "registration successful") {
+      if (response.data.message === "Registration successful") {
          navigate("/login");
       } else {
-         console.error(
-            "Registration Failed: ",
-            response.data || "An error occurred"
-         );
+         console.error("Error: ", response.data.error);
       }
    };
 

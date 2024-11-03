@@ -16,16 +16,16 @@ export default function LoginForm(): JSX.Element {
          const response: any = await login(username, password);
          handle_response(response);
       } catch (err) {
-         console.error("Error registering: ", err);
+         console.error("Error: ", err);
       }
    };
 
    const handle_response = async (response: any) => {
-      console.log(response.message);
-      if (response.message === "login successful") {
+      console.log(response);
+      if (response.message == "Login successful") {
          navigate("/user");
       } else {
-         console.error("Login Failed: ", response || "An error occurred");
+         console.log("Error: ", response.error);
       }
    };
 

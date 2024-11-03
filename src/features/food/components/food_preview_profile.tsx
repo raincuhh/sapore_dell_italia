@@ -33,7 +33,6 @@ export default function FoodPreviewProfile(profile: FoodInfo) {
                <Link
                   className="flex flex-col"
                   to={`/booking?foodId=${profile.id}`}
-                  target="_blank"
                   rel="noopener noreferrer"
                >
                   <div className="food_preview_img_cont flex flex-col relative">

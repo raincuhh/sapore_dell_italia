@@ -5,17 +5,17 @@ import {
    createBrowserRouter,
    createRoutesFromElements,
 } from "react-router-dom";
-import ProtectedRoute from "../../features/auth/components/protected_route";
-import PublicRoute from "../../features/auth/components/public_route";
-import AuthRoute from "../../features/auth/components/auth_route";
-import PageHome from "../../pages/home/page";
-import PageBooking from "../../pages/booking/page";
-import PageError from "../../pages/error/page";
-import PageRegister from "../../pages/register/page";
-import PageLogin from "../../pages/login/page";
-import PageUser from "../../pages/user/page";
-import PageAdminDashboard from "../../pages/admin_dashboard/page";
-import Navbar from "../../shared/components/navbar";
+import ProtectedRoute from "../features/auth/components/protected_route";
+import PublicRoute from "../features/auth/components/public_route";
+import AuthRoute from "../features/auth/components/auth_route";
+import PageHome from "../pages/home/page";
+import PageBooking from "../pages/booking/page";
+import PageError from "../pages/error/page";
+import PageRegister from "../pages/register/page";
+import PageLogin from "../pages/login/page";
+import PageUser from "../pages/user/page";
+import PageAdminDashboard from "../pages/admin_dashboard/page";
+import StyleSheetLoader from "../shared/components/style_sheet_loader";
 
 const routes = createRoutesFromElements(
    <>
@@ -24,6 +24,7 @@ const routes = createRoutesFromElements(
          element={
             <PublicRoute>
                <PageHome />
+               <StyleSheetLoader />
             </PublicRoute>
          }
          errorElement={<PageError />}
@@ -34,6 +35,7 @@ const routes = createRoutesFromElements(
          element={
             <AuthRoute>
                <PageLogin />
+               <StyleSheetLoader />
             </AuthRoute>
          }
          errorElement={<PageError />}
@@ -43,6 +45,7 @@ const routes = createRoutesFromElements(
          element={
             <AuthRoute>
                <PageRegister />
+               <StyleSheetLoader />
             </AuthRoute>
          }
          errorElement={<PageError />}
@@ -53,6 +56,7 @@ const routes = createRoutesFromElements(
          element={
             <ProtectedRoute>
                <PageUser />
+               <StyleSheetLoader />
             </ProtectedRoute>
          }
          errorElement={<PageError />}
@@ -62,6 +66,7 @@ const routes = createRoutesFromElements(
          element={
             <ProtectedRoute>
                <PageAdminDashboard />
+               <StyleSheetLoader />
             </ProtectedRoute>
          }
       />
@@ -70,6 +75,7 @@ const routes = createRoutesFromElements(
          element={
             <ProtectedRoute>
                <PageBooking />
+               <StyleSheetLoader />
             </ProtectedRoute>
          }
          errorElement={<PageError />}
