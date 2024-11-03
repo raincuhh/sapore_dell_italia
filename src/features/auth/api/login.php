@@ -14,16 +14,17 @@ if ($_SERVER["REQUEST_METHOD"] === "OPTIONS") {
 require "../../../shared/lib/utils.php";
 require "jwt_utils.php";
 
-$conn = get_sql_connection();
+$conn = get_db_connection();
 $data = json_decode(file_get_contents("php://input"));
 
 $username = $data->username;
 $password = $data->password;
 
-$stmt = $conn->prepare("SELECT * FROM users WHERE name = ?");
+
 
 try {
-  $stmt->bindParam("s", $username);
+  $stmt = $conn->prepare("SELECT * FROM users WHERE name = :username");
+  $stmt->bindParam(":username", $username, PDO::PARAM_STR);
   $stmt->execute();
   $user = $stmt->fetch(PDO::FETCH_ASSOC);
 

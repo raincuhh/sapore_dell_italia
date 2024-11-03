@@ -8,13 +8,22 @@ export default function PageRegister(): JSX.Element {
       <>
          <PageLayout>
             <CategoryLayout>
-               <section className="auth_form flex flex-col h-full justify-center items-center">
-                  <div className="auth_form_container w-full md:max-w-[400px]">
-                     <header className="flex w-full text-fs-m md:text-fs-l">
-                        <p>Register</p>
-                     </header>
+               <section className="flex flex-col h-full justify-center items-center">
+                  <div className="w-full max-w-[300px] md:max-w-[300px] flex flex-col">
+                     <div className="w-full flex justify-center">
+                        <Link to={"/"}>
+                           <img
+                              className="w-auto h-[120px] object-cover"
+                              src="/static/assets/icons/favicons/android-chrome-512x512.png"
+                              alt="logo"
+                           />
+                        </Link>
+                     </div>
+                     <div className="flex flex-col w-full mb-[1rem] items-center">
+                        <p className="text-fs-m">Register</p>
+                        <p className="text-fs-s">register to us?</p>
+                     </div>
                      <RegisterForm />
-
                      <div className="flex flex-row gap-2 w-full justify-center">
                         <p className="text-secondary-low-opacity">
                            Have an account?

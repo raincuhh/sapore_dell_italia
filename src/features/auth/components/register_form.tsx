@@ -37,44 +37,35 @@ export default function RegisterForm(): JSX.Element {
          className="flex flex-col w-full"
          onSubmit={handle_form_submit}
       >
-         <hr className="h-[1px] bg-secondary-low-opacity mb-m-em-l mt-m-em-m" />
-         <AuthFormInput
-            cont_name="form_username"
-            header_text="username"
-            input_type="text"
-            input_value={username}
-            input_on_change_callback={set_username}
-            input_name="auth_form_username"
-            input_placeholder="enter your username"
-         />
-         <hr className="h-[1px] bg-secondary-low-opacity my-m-em-l" />
-         <AuthFormInput
-            input_type="email"
-            cont_name="form_email"
-            header_text="email"
-            input_value={email}
-            input_on_change_callback={set_email}
-            input_name="auth_form_email"
-            input_placeholder="enter your mail"
-         />
-         <hr className="h-[1px] bg-secondary-low-opacity my-m-em-l" />
-         <AuthFormInput
-            cont_name="form_password"
-            header_text="password"
-            input_type="password"
-            input_value={password}
-            input_on_change_callback={set_password}
-            input_name="auth_form_password"
-            input_placeholder="enter your password"
-         />
-         <hr className="h-[1px] bg-secondary-low-opacity my-m-em-l " />
-         <div className="form_submit w-full h-full justify-center items-center mb-m-em-s">
-            <button className="text-secondary  transition-hover-base w-full h-[48px] bg-main rounded-[6px] hover:bg-main-alt relative">
-               <p className="absolute w-full h-full translate-y-[-25%] ">
-                  Register
-               </p>
-            </button>
+         <div className="flex flex-col w-full gap-[2px]">
+            <AuthFormInput
+               input_type="text"
+               input_value={username}
+               input_on_change_callback={set_username}
+               input_name="auth_form_username"
+               input_placeholder="username"
+            />
+            <AuthFormInput
+               input_type="email"
+               input_value={email}
+               input_on_change_callback={set_email}
+               input_name="auth_form_email"
+               input_placeholder="email"
+            />
+            <AuthFormInput
+               input_type="password"
+               input_value={password}
+               input_on_change_callback={set_password}
+               input_name="auth_form_password"
+               input_placeholder="password"
+            />
          </div>
+         <button className="w-full h-[50px] flex  text-secondary hover:text-secondary-alt transition-hover-base bg-main rounded-sm hover:bg-main-alt mt-[1rem] mb-[0.5rem] justify-center items-center ">
+            <div className="flex justify-center items-center gap-[0.2rem]">
+               <p className="font-bold">Register</p>
+               <i className="bx bx-link-external font-bold"></i>
+            </div>
+         </button>
       </form>
    );
 }

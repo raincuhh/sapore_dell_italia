@@ -11,6 +11,7 @@
    --s-main: rgba(221, 147, 102, 1);
    --s-secondary: rgba(240, 232, 227, 1);
    --s-secondary-low-opacity: rgba(240, 232, 227, 0.1);
+   --s-secondary-middle-opacity: rgba(240, 232, 227, 0.3);
    --s-secondary-alt: rgba(229, 222, 217, 1);
    --s-tertiary: rgba(237, 225, 218, 1);
 
@@ -99,8 +100,8 @@ textarea:-webkit-autofill:focus,
 select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
-   -webkit-text-fill-color: rgba(240, 232, 227, 1);
-   -webkit-box-shadow: 0 0 0px 1000px #00000000 inset;
+   -webkit-text-fill-color: var(--s-secondary);
+   -webkit-box-shadow: 0 0 0px 1000px #00000002 inset;
    transition: background-color 5000s ease-in-out 0s;
    color: white;
 }

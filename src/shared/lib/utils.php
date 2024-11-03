@@ -16,8 +16,8 @@ function load_env($file): void
 function get_db_connection(): bool|PDO
 {
   load_env(__DIR__ . "/../../../.env");
-  echo extension_loaded('pgsql') ? 'yes' : 'no';
-  echo "> ";
+  //echo extension_loaded('pgsql') ? 'yes' : 'no';
+
 
   $db_host = getenv("DB_HOST");
   $db_port = getenv("DB_PORT");
