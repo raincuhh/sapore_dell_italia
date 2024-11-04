@@ -3,7 +3,7 @@ import RenderList from "../../shared/components/render_list";
 
 export default function AdminSidebar() {
    return (
-      <div className="w-[15rem] ">
+      <div className="md:w-[15rem] ">
          <div className="mb-m-em-m">
             <div className="px-m-em-l">
                <h4 className="text-fs-l font-playfair">Dashboard</h4>
