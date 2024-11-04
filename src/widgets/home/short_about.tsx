@@ -20,13 +20,19 @@ export default function ShortAbout(): JSX.Element {
       useRef<HTMLDivElement>(null);
 
    useEffect(() => {
-      animate_paragraph(ref_category_short_about, ref_paragraph);
-      animate_thumbnail(
+      //animate_paragraph(ref_category_short_about, ref_paragraph);
+      /*animate_thumbnail(
          ref_category_short_about,
          ref_thumbnail,
          ref_thumbnail_box_shadow
       );
-   }, []);
+      */
+   }, [
+      ref_category_short_about,
+      ref_paragraph,
+      ref_thumbnail,
+      ref_thumbnail_box_shadow,
+   ]);
 
    return (
       <section
@@ -67,7 +73,9 @@ function animate_paragraph(
    ref_category_short_about: React.RefObject<HTMLElement>,
    ref_paragraph: React.RefObject<HTMLParagraphElement>
 ) {
-   if (!ref_paragraph.current || !ref_category_short_about.current) return;
+   if (!ref_paragraph.current || !ref_category_short_about.current) {
+      return;
+   }
 
    const split_paragraph: Splitting.Result[] = Splitting({
       target: ref_paragraph.current,
@@ -80,7 +88,7 @@ function animate_paragraph(
    const tl: GSAPTimeline = gsap.timeline({
       scrollTrigger: {
          trigger: ref_category_short_about.current,
-         start: "top-=20% top",
+         start: "top -=20%",
          end: "+=30%",
          scrub: 0.25,
       },

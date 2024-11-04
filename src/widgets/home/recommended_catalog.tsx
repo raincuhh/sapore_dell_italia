@@ -9,7 +9,7 @@ export default function RecommendedCatalog(): JSX.Element {
    const [food_list, set_food_list] = useState([]);
 
    useEffect(() => {
-      // replace test function with actual fetch later on when i actually have stuff in datbase
+      // replace test function with actual fetch later on when stuff is done
       fetch_recommended_food_list_test()
          .then((data: any) => {
             set_food_list(Object.values(data));
@@ -36,18 +36,6 @@ export default function RecommendedCatalog(): JSX.Element {
                         />
                      )}
                   />
-
-                  {/*food_list.map((data: FoodInfo) => (
-                     <FoodPreviewProfile
-                        key={data.id}
-                        id={data.id}
-                        name={data.name}
-                        price={data.price}
-                        short_desc={data.short_desc}
-                        long_desc={data.long_desc}
-                        image_paths={data.image_paths}
-                     ></FoodPreviewProfile>
-                  ))*/}
                </div>
             </section>
          </CategoryLayout>

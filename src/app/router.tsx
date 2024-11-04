@@ -15,6 +15,7 @@ import PageRegister from "../pages/register/page";
 import PageLogin from "../pages/login/page";
 import PageUser from "../pages/user/page";
 import PageAdminDashboard from "../pages/admin_dashboard/page";
+import PageAdminUserList from "../pages/admin_user_list/page";
 import StyleSheetLoader from "../shared/components/style_sheet_loader";
 
 const routes = createRoutesFromElements(
@@ -62,6 +63,16 @@ const routes = createRoutesFromElements(
          errorElement={<PageError />}
       />
       <Route
+         path="/booking"
+         element={
+            <ProtectedRoute>
+               <PageBooking />
+               <StyleSheetLoader />
+            </ProtectedRoute>
+         }
+         errorElement={<PageError />}
+      />
+      <Route
          path="/admin/dashboard"
          element={
             <ProtectedRoute>
@@ -71,14 +82,13 @@ const routes = createRoutesFromElements(
          }
       />
       <Route
-         path="/booking"
+         path="/admin/users"
          element={
             <ProtectedRoute>
-               <PageBooking />
+               <PageAdminUserList />
                <StyleSheetLoader />
             </ProtectedRoute>
          }
-         errorElement={<PageError />}
       />
    </>
 );

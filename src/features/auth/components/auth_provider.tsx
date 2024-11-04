@@ -1,11 +1,10 @@
 import { PropsWithChildren, useState, useEffect } from "react";
-import { User, UserRoles } from "../../users/lib/types";
+import { UserRoles } from "../../users/lib/types";
 import { AuthContext } from "../lib/utils";
 import {
    login as api_login,
    validate_jwt_token as api_validate_jwt_token,
 } from "../api";
-import { jwtDecode, JwtPayload } from "jwt-decode";
 import { role_str_to_role_enum } from "../../../shared/lib/utils";
 
 type AuthProviderProps = PropsWithChildren;

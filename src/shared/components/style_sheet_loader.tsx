@@ -19,13 +19,15 @@ export default function StyleSheetLoader() {
 function get_style_sheet(pathname: string): string {
    switch (pathname) {
       case "/":
-         return "home/home.css";
+         return "home/style.css";
       case "/booking":
-         return "booking/booking.css";
+         return "booking/style.css";
       case "/register":
          return "shared/auth_page.css";
       case "/login":
          return "shared/auth_page.css";
+      case "/admin/users":
+         return "admin_user_list/style.css";
       default:
          return "shared/global.css";
    }
