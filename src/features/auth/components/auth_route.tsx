@@ -12,6 +12,7 @@ export default function AuthRoute({ children }: AuthRouteProps): JSX.Element {
 
    useEffect(() => {
       if (!loading && is_authenticated) {
+         console.log(role);
          const redirectPath =
             localStorage.getItem("redirect_path") ||
             (role === UserRoles.admin ? "/admin/dashboard" : "/user");

@@ -1,81 +1,42 @@
-import { Link } from "react-router-dom";
-import RenderList from "../../shared/components/render_list";
+import { Link, NavLink } from "react-router-dom";
+import BrandLogo from "../../shared/components/logo";
+import Navbar from "../../shared/components/navbar";
 
 export default function AdminSidebar() {
    return (
-      <div className="md:w-[15rem] ">
-         <div className="mb-m-em-m">
-            <div className="px-m-em-l">
-               <h4 className="text-fs-l font-playfair">Dashboard</h4>
-            </div>
-         </div>
-         <div className="mt-0 w-full">
-            <nav className="w-full">
-               <ul className="flex flex-col w-full">
-                  <NavSectionWithHeaders
-                     header_title="users"
-                     sections={[
-                        {
-                           id: 1,
-                           name: "user_list",
-                           to_link: "/admin/user_list",
-                        },
-                     ]}
-                  />
-                  <NavSectionWithHeaders
-                     header_title="foods"
-                     sections={[
-                        {
-                           id: 1,
-                           name: "food_list",
-                           to_link: "/admin/food_list",
-                        },
-                     ]}
-                  />
-               </ul>
-            </nav>
-         </div>
+      <div id="admin_sidebar" className="w-[3.5rem] h-full flex flex-col">
+         <nav className="py-2 h-full">
+            <ul className="w-full flex flex-col items-center px-[0.5rem] gap-[0.5rem]">
+               <BrandLogo to_link="#" width_css={"w-[40px]"} />
+               <NavButton icon_css="bx bx-home-alt-2 text-fs-m" to_link="/" />
+               <div className="h-[1px] w-full bg-secondary-low-opacity"></div>
+               <NavButton
+                  icon_css="bx bx-user text-fs-m"
+                  to_link="/admin/dashboard/users"
+               />
+               <NavButton
+                  icon_css="bx bx-food-menu text-fs-m"
+                  to_link="/admin/dashboard/foods"
+               />
+            </ul>
+         </nav>
       </div>
    );
 }
 
-type NavSection = { id: number; name: string; to_link: string };
+type NavButtonProps = { icon_css: string; to_link: string };
 
-type NavSectionWithHeadersProps = {
-   header_title: string;
-   sections: NavSection[];
-};
-
-function NavSectionWithHeaders({
-   header_title,
-   sections,
-}: NavSectionWithHeadersProps) {
+function NavButton({ icon_css, to_link }: NavButtonProps) {
    return (
-      <div className="flex flex-col w-full">
-         <div className="mb-m-em-m">
-            <h4>{header_title}</h4>
-         </div>
-         <ul className="w-full">
-            <RenderList
-               data={sections}
-               render_item={(e: NavSection) => (
-                  <NavSection
-                     key={e.id}
-                     id={e.id}
-                     name={e.name}
-                     to_link={e.to_link}
-                  />
-               )}
-            />
-         </ul>
-      </div>
-   );
-}
-
-function NavSection({ name, to_link }: NavSection) {
-   return (
-      <div className="h-[55px] w-full">
-         <Link to={to_link}>{name}</Link>
-      </div>
+      <NavLink
+         to={to_link}
+         className={({ isActive }) =>
+            `admin_sidebar_nav_button flex w-[2.5rem] h-[2.5rem] rounded-[3px] items-center justify-center ${
+               isActive ? "bg-secondary" : "hover:bg-secondary-low-opacity"
+            }`
+         }
+      >
+         <i className={`${icon_css} text-secondary-low-opacity`}></i>
+      </NavLink>
    );
 }

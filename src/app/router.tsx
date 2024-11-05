@@ -82,7 +82,7 @@ const routes = createRoutesFromElements(
          }
       />
       <Route
-         path="/admin/users"
+         path="/admin/dashboard/users"
          element={
             <ProtectedRoute>
                <PageAdminUserList />

@@ -1,0 +1,9 @@
+#admin_sidebar nav {
+   border-right: 1px solid var(--s-secondary-low-opacity);
+}
+
+.admin_sidebar_nav_button:hover {
+   i {
+      color: var(--s-secondary);
+   }
+}
