@@ -1,8 +1,10 @@
 import BrandLogo from "../../shared/components/logo";
 import { use_admin_page } from "../../features/auth/lib/utils";
-import { AdminDashboardSubPages } from "../../shared/lib/types";
+import { AdminSubPages } from "../../shared/lib/types";
 
-export default function AdminSidebar() {
+type AdminSidebarProps = {};
+
+export default function AdminSidebar({}: AdminSidebarProps) {
    const { switch_page, sub_page } = use_admin_page();
 
    return (
@@ -12,52 +14,48 @@ export default function AdminSidebar() {
                <BrandLogo to_link="/" width_css={"w-[40px]"} />
                <NavButton
                   icon_css={`bx bx-home-alt-2 ${
-                     sub_page === AdminDashboardSubPages.dashboard &&
-                     "!text-secondary"
+                     sub_page === AdminSubPages.dashboard && "!text-secondary"
                   }`}
                   container_css={`${
-                     sub_page === AdminDashboardSubPages.dashboard &&
+                     sub_page === AdminSubPages.dashboard &&
                      "!bg-secondary-low-opacity"
                   }`}
                   callback_switch_page={switch_page}
-                  page={AdminDashboardSubPages.dashboard}
+                  page={AdminSubPages.dashboard}
                />
                <div className="h-[1px] w-full bg-secondary-low-opacity"></div>
                <NavButton
                   icon_css={`bx bx-user ${
-                     sub_page === AdminDashboardSubPages.user_list &&
-                     "!text-secondary"
+                     sub_page === AdminSubPages.user_list && "!text-secondary"
                   }`}
                   container_css={`${
-                     sub_page === AdminDashboardSubPages.user_list &&
+                     sub_page === AdminSubPages.user_list &&
                      "!bg-secondary-low-opacity"
                   }`}
                   callback_switch_page={switch_page}
-                  page={AdminDashboardSubPages.user_list}
+                  page={AdminSubPages.user_list}
                />
                <NavButton
                   icon_css={`bx bx-food-menu ${
-                     sub_page === AdminDashboardSubPages.food_list &&
-                     "!text-secondary"
+                     sub_page === AdminSubPages.food_list && "!text-secondary"
                   }`}
                   container_css={`${
-                     sub_page === AdminDashboardSubPages.food_list &&
+                     sub_page === AdminSubPages.food_list &&
                      "!bg-secondary-low-opacity"
                   }`}
                   callback_switch_page={switch_page}
-                  page={AdminDashboardSubPages.food_list}
+                  page={AdminSubPages.food_list}
                />
                <NavButton
                   icon_css={`bx bx-bell ${
-                     sub_page === AdminDashboardSubPages.order_list &&
-                     "!text-secondary"
+                     sub_page === AdminSubPages.order_list && "!text-secondary"
                   }`}
                   container_css={`${
-                     sub_page === AdminDashboardSubPages.order_list &&
+                     sub_page === AdminSubPages.order_list &&
                      "!bg-secondary-low-opacity"
                   }`}
                   callback_switch_page={switch_page}
-                  page={AdminDashboardSubPages.order_list}
+                  page={AdminSubPages.order_list}
                />
             </ul>
          </nav>
@@ -69,7 +67,7 @@ type NavButtonProps = {
    icon_css: string;
    container_css: string;
    callback_switch_page: Function;
-   page: AdminDashboardSubPages;
+   page: AdminSubPages;
 };
 
 function NavButton({

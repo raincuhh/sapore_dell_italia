@@ -21,7 +21,7 @@ export type AuthContextProps = {
    loading: boolean;
 };
 
-export enum AdminDashboardSubPages {
+export enum AdminSubPages {
    dashboard = "dashboard",
    user_list = "user_list",
    food_list = "food_list",
@@ -29,6 +29,6 @@ export enum AdminDashboardSubPages {
 }
 
 export type AdminPageContextProps = {
-   switch_page: (page: AdminDashboardSubPages) => void;
-   sub_page: AdminDashboardSubPages;
+   switch_page: (page: AdminSubPages) => void;
+   sub_page: AdminSubPages;
 };

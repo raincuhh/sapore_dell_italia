@@ -1,13 +1,13 @@
 import { PropsWithChildren, useState } from "react";
 import { AdminPageContext } from "../lib/utils";
-import { AdminDashboardSubPages } from "../../../shared/lib/types";
+import { AdminSubPages } from "../../../shared/lib/types";
 
 type AdminPageProviderProps = PropsWithChildren & {};
 
 export function AdminPageProvider({ children }: AdminPageProviderProps) {
-   const [sub_page, set_sub_page] = useState(AdminDashboardSubPages.dashboard);
+   const [sub_page, set_sub_page] = useState(AdminSubPages.dashboard);
 
-   const switch_page = (page: AdminDashboardSubPages) => {
+   const switch_page = (page: AdminSubPages) => {
       set_sub_page(page);
    };
 
