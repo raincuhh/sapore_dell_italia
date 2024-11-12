@@ -18,8 +18,6 @@ Make sure you have the following installed on your system:
    git clone <repository-url> wamp/www/sapore_dell_italia
    ```
 
-   Replace `<repository-url>` with the actual URL of your repository.
-
 2. **Navigate to the Project Directory**
    Change your working directory to the project folder:
 
@@ -35,7 +33,7 @@ Make sure you have the following installed on your system:
    ```
 
 4. **Create the Environment File**
-   You need to obtain the `.env.dev.local` file from me and place it in the project root directory. This file contains environment-specific settings for development.
+   You need to obtain the `.env` file from me or one of the collabs and place it in the project root directory. This file contains environment-specific settings for development.
 
 5. **Start the Webpack Development Server**
    Run the following to start the development server on port 3000:

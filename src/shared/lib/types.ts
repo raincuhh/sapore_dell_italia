@@ -20,3 +20,15 @@ export type AuthContextProps = {
    logout: () => void;
    loading: boolean;
 };
+
+export enum AdminDashboardSubPages {
+   dashboard = "dashboard",
+   user_list = "user_list",
+   food_list = "food_list",
+   order_list = "order_list",
+}
+
+export type AdminPageContextProps = {
+   switch_page: (page: AdminDashboardSubPages) => void;
+   sub_page: AdminDashboardSubPages;
+};

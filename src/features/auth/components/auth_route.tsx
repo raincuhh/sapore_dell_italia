@@ -15,7 +15,7 @@ export default function AuthRoute({ children }: AuthRouteProps): JSX.Element {
          console.log(role);
          const redirectPath =
             localStorage.getItem("redirect_path") ||
-            (role === UserRoles.admin ? "/admin/dashboard" : "/user");
+            (role === UserRoles.admin ? "/admin" : "/user");
 
          if (redirectPath) {
             localStorage.removeItem("redirect_path");

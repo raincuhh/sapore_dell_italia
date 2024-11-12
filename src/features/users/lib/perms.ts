@@ -1,4 +1,5 @@
 import { User, UserRoles } from "./types";
+import { AuthContextProps } from "../../../shared/lib/types";
 
 // checking user object to see if admin
 export function is_admin(user: User): boolean {

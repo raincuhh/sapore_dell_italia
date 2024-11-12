@@ -26,7 +26,7 @@ function get_style_sheet(pathname: string): string {
          return "shared/auth_page.css";
       case "/login":
          return "shared/auth_page.css";
-      case "/admin/dashboard":
+      case "/admin":
          return "shared/admin_page.css";
       default:
          return "shared/global.css";
