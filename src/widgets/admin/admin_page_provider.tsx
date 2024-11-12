@@ -1,6 +1,6 @@
 import { PropsWithChildren, useState } from "react";
-import { AdminPageContext } from "../lib/utils";
-import { AdminSubPages } from "../../../shared/lib/types";
+import { AdminPageContext } from "../../features/auth/lib/utils";
+import { AdminSubPages } from "../../shared/lib/types";
 
 type AdminPageProviderProps = PropsWithChildren & {};
 

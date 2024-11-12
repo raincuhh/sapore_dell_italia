@@ -1,3 +1,9 @@
+import AdminSubPageLayout from "./admin_sub_page_layout";
+
 export default function AdminOrderListSubPage() {
-   return <>amdinorderlistusbpage</>;
+   return (
+      <>
+         <AdminSubPageLayout>test</AdminSubPageLayout>
+      </>
+   );
 }

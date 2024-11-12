@@ -3,7 +3,7 @@ import AdminSidebar from "../../widgets/admin/admin_sidebar";
 import AdminMain from "../../widgets/admin/admin";
 import AdminNavbar from "../../widgets/admin/admin_navbar";
 
-import { AdminPageProvider } from "../../features/auth/components/admin_page_provider";
+import { AdminPageProvider } from "../../widgets/admin/admin_page_provider";
 
 export default function PageAdmin(): JSX.Element {
    return (

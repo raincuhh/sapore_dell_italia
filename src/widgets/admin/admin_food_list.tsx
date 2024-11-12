@@ -1,3 +1,9 @@
+import AdminSubPageLayout from "./admin_sub_page_layout";
+
 export default function AdminFoodListSubPage() {
-   return <>admin foodlist subpage</>;
+   return (
+      <>
+         <AdminSubPageLayout>test</AdminSubPageLayout>
+      </>
+   );
 }

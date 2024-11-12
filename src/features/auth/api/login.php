@@ -33,7 +33,10 @@ function login($username, $password): array
     $stmt->bindParam(":username", $username, PDO::PARAM_STR);
 
     if (!$stmt->execute()) {
-      return ["status" => 400, "message" => "Query failed"];
+      return [
+        "status" => 400,
+        "data" => ["message" => "Query failed"]
+      ];
     }
 
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -72,6 +75,7 @@ function login($username, $password): array
     if (!$new_stmt->execute()) {
       return ["status" => 400, "message" => "Query failed"];
     }
+
     $updated_user = $new_stmt->fetch(PDO::FETCH_ASSOC);
 
     if (!$updated_user) {

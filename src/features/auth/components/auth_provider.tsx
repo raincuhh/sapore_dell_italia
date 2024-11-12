@@ -15,9 +15,9 @@ export default function AuthProvider({
    const [jwt_token, set_jwt_token] = useState(
       localStorage.getItem("jwt_token")
    );
-   const [is_authenticated, set_is_authenticated] = useState(false);
-   const [role, set_role] = useState(UserRoles.user);
-   const [loading, set_loading] = useState(true);
+   const [is_authenticated, set_is_authenticated] = useState<boolean>(false);
+   const [role, set_role] = useState<UserRoles>(UserRoles.user);
+   const [loading, set_loading] = useState<boolean>(true);
 
    useEffect(() => {
       if (jwt_token) {
@@ -49,7 +49,7 @@ export default function AuthProvider({
 
    const login = async (username: string, password: string) => {
       try {
-         const response = await api_login(username, password);
+         const response: any = await api_login(username, password);
          localStorage.setItem("jwt_token", response.data.jwt_token);
          set_jwt_token(response.data.jwt_token);
          return response.data;
