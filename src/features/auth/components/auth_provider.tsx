@@ -1,5 +1,5 @@
 import { PropsWithChildren, useState, useEffect } from "react";
-import { UserRoles } from "../../users/lib/types";
+import { UserRoles } from "../../../shared/lib/types";
 import { AuthContext } from "../lib/utils";
 import {
    login as api_login,

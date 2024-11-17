@@ -1,15 +1,12 @@
 import { useEffect, useState } from "react";
 import { get_full_user_list as api_get_full_user_list } from "../api";
+import RenderList from "../../../shared/components/render_list";
+import Card from "../../../shared/components/card";
 
-interface User {
-   user_id: number;
-   name: string;
-   email: string;
-   role: string;
-}
+import { User } from "../../../shared/lib/types";
 
 export default function FullUserTable() {
-   const [user_list, set_user_list] = useState<[]>([]);
+   const [user_list, set_user_list] = useState<User[]>([]);
 
    const set_users = async () => {
       try {
@@ -25,13 +22,11 @@ export default function FullUserTable() {
       set_users();
    }, []);
 
-   useEffect(() => {
-      //console.log(user_list);
-   }, [user_list]);
-
    return (
       <>
-         <div className="w-full"></div>
+         <div className="w-full h-full">
+            <Card>test</Card>
+         </div>
 
          {/* <table>
             <thead>

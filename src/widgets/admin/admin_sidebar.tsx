@@ -8,10 +8,17 @@ export default function AdminSidebar({}: AdminSidebarProps) {
    const { switch_page, sub_page } = use_admin_page();
 
    return (
-      <div id="admin_sidebar" className="w-[3.5rem] h-full flex flex-col">
-         <nav className="py-2 h-full border-r-[1px] border-solid border-secondary-low-opacity">
-            <ul className="w-full flex flex-col items-center px-[0.5rem] gap-[0.5rem]">
-               <BrandLogo to_link="/" width_css={"w-[40px]"} />
+      <div
+         id="admin_sidebar"
+         className="sm:w-[3.5rem] h-[3.5rem] sm:h-full flex flex-row sm:flex-col"
+      >
+         <nav className="py-2 h-full sm:border-r-[1px] border-t-[1px] sm:border-t-0 w-full border-solid border-secondary-low-opacity">
+            <ul className="w-full flex flex-row sm:flex-col items-center justify-center px-[0.5rem] gap-[0.5rem]">
+               <BrandLogo
+                  to_link="/"
+                  width_css={"w-[40px]"}
+                  root_css="hidden sm:block"
+               />
                <NavButton
                   icon_css={`bx bx-home-alt-2 ${
                      sub_page === AdminSubPages.dashboard && "!text-secondary"
@@ -23,7 +30,7 @@ export default function AdminSidebar({}: AdminSidebarProps) {
                   callback_switch_page={switch_page}
                   page={AdminSubPages.dashboard}
                />
-               <div className="h-[1px] w-full bg-secondary-low-opacity"></div>
+               <div className="w-[1px] sm:h-[1px] sm:w-full bg-secondary-low-opacity"></div>
                <NavButton
                   icon_css={`bx bx-user ${
                      sub_page === AdminSubPages.user_list && "!text-secondary"

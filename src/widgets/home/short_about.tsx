@@ -20,13 +20,12 @@ export default function ShortAbout(): JSX.Element {
       useRef<HTMLDivElement>(null);
 
    useEffect(() => {
-      //animate_paragraph(ref_category_short_about, ref_paragraph);
-      /*animate_thumbnail(
+      animate_paragraph(ref_category_short_about, ref_paragraph);
+      animate_thumbnail(
          ref_category_short_about,
          ref_thumbnail,
          ref_thumbnail_box_shadow
       );
-      */
    }, [
       ref_category_short_about,
       ref_paragraph,

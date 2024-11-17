@@ -10,12 +10,9 @@ export default function PageAdmin(): JSX.Element {
       <>
          <PageLayout>
             <AdminPageProvider>
-               <div className="flex h-full w-full">
+               <div className="flex h-full w-full flex-col-reverse sm:flex-row justify-between">
                   <AdminSidebar />
-                  <div className="flex flex-col w-full">
-                     <AdminNavbar />
-                     <AdminMain />
-                  </div>
+                  <AdminMain />
                </div>
             </AdminPageProvider>
          </PageLayout>
