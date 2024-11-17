@@ -1,4 +1,4 @@
-import { User, UserRoles } from "./types";
+import { User, UserRoles } from "../../../shared/lib/types";
 import { AuthContextProps } from "../../../shared/lib/types";
 
 // checking user object to see if admin

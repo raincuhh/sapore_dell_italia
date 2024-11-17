@@ -4,12 +4,13 @@ export enum UserRoles {
 }
 
 export type User = {
-   id: number;
+   user_id: number;
    name: string;
    password: string;
    email: string;
-   created_at: string;
    role: UserRoles;
+   jwt_version: number;
+   //created_at: string;
 };
 
 export type AuthContextProps = {

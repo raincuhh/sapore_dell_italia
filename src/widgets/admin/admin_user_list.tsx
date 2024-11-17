@@ -6,7 +6,7 @@ export default function AdminUserListSubPage(): JSX.Element {
    return (
       <>
          <AdminSubPageLayout>
-            <div className="flex flex-col h-full">
+            <div className="flex flex-col h-full overflow-y-scroll">
                <EditUserTable />
                <FullUserTable />
             </div>

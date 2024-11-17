@@ -1,7 +1,7 @@
 import React, { PropsWithChildren, useEffect } from "react";
 import { use_auth } from "../lib/utils";
 import { useLocation, useNavigate } from "react-router-dom";
-import { UserRoles } from "../../users/lib/types";
+import { UserRoles } from "../../../shared/lib/types";
 import { role_str_to_role_enum } from "../../../shared/lib/utils";
 
 type ProtectedRouteProps = PropsWithChildren;
