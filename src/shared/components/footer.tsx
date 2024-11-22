@@ -6,13 +6,13 @@ export default function Footer(): JSX.Element {
       <section id="footer">
          <CategoryLayout>
             <div className="mb-m-em-m mt-m-em-xl">
-               <p className="text-fs-xl sm:text-fs-xxl font-main text-main">
+               <p className="text-fs-xl sm:text-fs-2xl font-main text-main">
                   La Sapore Dell'Italia
                </p>
             </div>
             <footer>
                <header className="mb-m-em-m">
-                  <p className="font-secondary text-fs-s">
+                  <p className="font-secondary text-fs-m">
                      Have any questions? Send any inquiries at{" "}
                      <span>
                         {" "}
@@ -33,7 +33,7 @@ export default function Footer(): JSX.Element {
                   <div className="flex flex-col">
                      <div className="flex gap-[1rem] mt-m-em-s mb-m-em-l">
                         <div className="col">
-                           <p className="font-medium cursor-pointer hover:text-main transition-hover-base font-secondary text-fs-s">
+                           <p className="font-medium cursor-pointer hover:text-main transition-hover-base font-secondary text-fs-m">
                               ©Sapore Dell'Italia 2024
                            </p>
                         </div>

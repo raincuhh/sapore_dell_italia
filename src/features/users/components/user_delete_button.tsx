@@ -33,10 +33,10 @@ export default function UserDeleteButton({
 
    return (
       <>
-         <div className="flex justify-center items-center w-full h-full">
+         <div className="flex items-center justify-center ">
             <button
                onClick={handleDelete}
-               className="bg-red-600 text-secondary w-full my-2 rounded-sm"
+               className="w-full bg-red-600 rounded-sm text-secondary"
                disabled={loading}
             >
                {loading ? (

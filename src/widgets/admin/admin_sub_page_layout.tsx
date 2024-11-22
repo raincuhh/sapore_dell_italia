@@ -7,7 +7,9 @@ export default function AdminSubPageLayout({
 }: AdminSubPageLayoutProps) {
    return (
       <>
-         <div className="sm:py-4 sm:px-8 py-2 px-4 h-full">{children}</div>
+         <div className="h-full overflow-hidden">
+            <div className="px-6 py-4 overflow-x-scroll">{children}</div>
+         </div>
       </>
    );
 }

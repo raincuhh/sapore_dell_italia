@@ -5,6 +5,8 @@ module.exports = {
       extend: {
          colors: {
             bg: "rgba(28, 33, 38, 1)",
+            "bg-secondary": "rgba(38, 43, 48, 1)",
+            "bg-secondary-alt": "rgba(48, 53, 58, 1)",
             white: "rgba(255, 255, 255, 1)",
             light: "rgba(239, 232, 227, 1)",
             dark: "rgba(23, 27, 31, 1)",
@@ -12,7 +14,7 @@ module.exports = {
             main: "rgba(221, 147, 102, 1)",
             "main-alt": "rgba(221, 147, 102, 0.8)",
             secondary: "rgba(240, 232, 227, 1)",
-            "secondary-low-opacity": "rgba(240, 232, 227, 0.3)",
+            "secondary-low-opacity": "rgba(240, 232, 227, 0.2)",
             "secondary-middle-opacity": "rgba(240, 232, 227, 0.5)",
             "secondary-alt": "rgba(229, 222, 217, 1)",
             tertiary: "rgba(237, 225, 218, 1)",
@@ -28,16 +30,16 @@ module.exports = {
             "max-width": "clamp(76rem, 53vw, 84rem)",
          },
          fontSize: {
-            "fs-xxs": "clamp(0.7rem, 1.25vw + 0.5rem, 0.875rem)",
-            "fs-xs": "clamp(0.75rem, 1.5vw + 0.5rem, 1rem)",
-            "fs-s": "clamp(0.875rem, 1.75vw + 0.5rem, 1.125rem)",
-            "fs-m": "clamp(1rem, 2vw + 1rem, 1.5rem)",
-            "fs-l": "clamp(1.25rem, 2.5vw + 1rem, 2rem)",
-            "fs-xl": "clamp(1.5rem, 3vw + 1rem, 2.5rem)",
-            "fs-xxl": "clamp(2rem, 4vw + 1rem, 3rem)",
-            "fs-special-ms": "clamp(0.95rem, 1.85vw + 1rem, 1.25rem)",
-            "fs-hero-s": "clamp(0.96rem, 1.46vw + 1rem, 1.5rem)",
-            "fs-hero-m": "clamp(1.5rem, 3vw + 1rem, 1.75rem)",
+            "fs-xxs": "0.625rem", // 10px
+            "fs-xs": "0.75rem", // 12px
+            "fs-s": "0.875rem", // 14px
+            "fs-m": "1rem", // 16px
+            "fs-l": "1.5rem", // 24px
+            "fs-xl": "2rem", // 32px
+            "fs-2xl": "3rem", // 48px
+            "fs-3xl": "4.5rem", // 72px
+            "fs-4xl": "6.75rem", // 108px
+            "fs-5xl": "10.125rem", // 162px
          },
          zIndex: {
             loader: "4000",

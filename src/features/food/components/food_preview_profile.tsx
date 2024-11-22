@@ -41,7 +41,7 @@ export default function FoodPreviewProfile(profile: FoodInfo) {
                         className="absolute w-full opacity-0"
                         src={
                            profile.image_path_base
-                              ? profile.image_path_base[0]
+                              ? profile.image_path_base
                               : "../img/path"
                         }
                         alt="food preview hover image"
@@ -50,38 +50,24 @@ export default function FoodPreviewProfile(profile: FoodInfo) {
                         className="w-full"
                         src={
                            profile.image_path_hover
-                              ? profile.image_path_hover[1]
+                              ? profile.image_path_hover
                               : "../img/path"
                         }
                         alt="food preview base image"
                      />
                   </div>
                   <div className="flex flex-col">
-                     <div className="flex justify-between mt-m-em-xxs">
-                        <div>
-                           <p className="font-medium font-secondary text-fs-s">
-                              {profile.name}
-                           </p>
-                        </div>
-                        <div>
-                           <p className="font-medium font-secondary text-fs-s">
-                              {profile.price}
-                           </p>
-                        </div>
+                     <div className="flex justify-between font-medium mt-m-em-xxs font-secondary text-fs-m">
+                        <div>{profile.name}</div>
+                        <div>{profile.price}</div>
                      </div>
                      <div
                         ref={ref_lower_info_cont}
-                        className="flex justify-between mt-m-em-xl text-secondary-low-opacity"
+                        className="flex justify-between font-medium mt-m-em-xl text-secondary-low-opacity font-secondary text-fs-m"
                      >
-                        <div>
-                           <p className="font-medium font-secondary text-fs-s">
-                              {profile.desc_short}
-                           </p>
-                        </div>
+                        <div>{profile.desc_short}</div>
                         <div className="flex items-center">
-                           <p className="font-medium font-secondary text-fs-s">
-                              booking
-                           </p>
+                           <p>booking</p>
                            <i
                               ref={ref_booking_arrow}
                               className="bx bx-right-arrow-alt"

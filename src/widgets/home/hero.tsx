@@ -5,13 +5,13 @@ export default function Hero(): JSX.Element {
       <section className="pointer-events-none select-none category category_hero">
          <CategoryLayout inner_name="in_cont_hero">
             <section className="hero">
-               <div className="hero_container flex w-full justify-center place-content-center overflow-hidden items-center relative gap-m-em-xs h-[594px]">
-                  <header className="hero_title flex-nowrap flex flex-col justify-end gap-m-em-s h-[32px]">
-                     <p>/</p>
+               <div className="hero_container gap-4 flex w-full justify-center place-content-center overflow-hidden items-center relative h-[594px]">
+                  <header className="text-main font-main flex-nowrap flex flex-col justify-end gap-m-em-s h-[32px] text-fs-m sm:text-fs-xl md:text-fs-2xl">
+                     <p className="text-transparent">/</p>
                      <p>We are</p>
                   </header>
                   <div className="hero_title_list">
-                     <div className="hero_title_list_inner flex justify-end flex-col items-start h-[32px] gap-m-em-s">
+                     <div className="hero_title_list_inner flex justify-end flex-col items-start h-[32px] gap-m-em-s text-fs-m sm:text-fs-xl md:text-fs-2xl">
                         <p className="h1">an italian restaurant.</p>
                         <p className="h1">an inviting escape.</p>
                         <p className="h1">passionate.</p>

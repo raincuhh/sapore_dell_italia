@@ -1,5 +1,6 @@
-import { use_admin_page } from "../../features/auth/lib/utils";
+import { use_admin_page, use_auth } from "../../features/auth/lib/utils";
 import { AdminSubPages } from "../../shared/lib/types";
+import BrandLogo from "../../shared/components/logo";
 
 export default function AdminNavbar() {
    const { sub_page } = use_admin_page();
@@ -19,9 +20,17 @@ export default function AdminNavbar() {
 
    return (
       <>
-         <nav className="h-min w-full border-b-[1px] border-solid border-secondary-low-opacity py-1 px-2 sm:py-2 sm:px-4">
-            <div className="flex justify-between h-full items-center">
-               <header className="text-fs-m">{header_title(sub_page)}</header>
+         <nav className="h-min w-full border-b-[1px] border-solid border-secondary-low-opacity py-2 px-2 sm:px-4 bg-bg-secondary">
+            <div className="flex items-center gap-2 h-[36px]">
+               <BrandLogo
+                  to_link="/"
+                  className="h-full"
+                  root_css="block h-[36px] sm:hidden"
+               />
+               <div className="block sm:hidden h-full w-[1px] bg-secondary-low-opacity"></div>
+               <header className="font-medium text-fs-m sm:text-fs-l">
+                  {header_title(sub_page)}
+               </header>
             </div>
          </nav>
       </>

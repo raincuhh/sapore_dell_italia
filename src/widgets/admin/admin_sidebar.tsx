@@ -12,11 +12,11 @@ export default function AdminSidebar({}: AdminSidebarProps) {
          id="admin_sidebar"
          className="sm:w-[3.5rem] h-[3.5rem] sm:h-full flex flex-row sm:flex-col"
       >
-         <nav className="py-2 h-full sm:border-r-[1px] border-t-[1px] sm:border-t-0 w-full border-solid border-secondary-low-opacity">
+         <nav className="py-2 h-full sm:border-r-[1px] border-t-[1px] sm:border-t-0 w-full border-solid border-secondary-low-opacity bg-bg-secondary">
             <ul className="w-full flex flex-row sm:flex-col items-center justify-center px-[0.5rem] gap-[0.5rem]">
                <BrandLogo
                   to_link="/"
-                  width_css={"w-[40px]"}
+                  className={"w-[40px]"}
                   root_css="hidden sm:block"
                />
                <NavButton

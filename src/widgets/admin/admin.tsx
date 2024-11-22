@@ -1,5 +1,5 @@
-import { AdminSubPages } from "../../shared/lib/types";
-import { use_admin_page } from "../../features/auth/lib/utils";
+import { AdminSubPages, UserRoles } from "../../shared/lib/types";
+import { use_admin_page, use_auth } from "../../features/auth/lib/utils";
 import AdminNavbar from "./admin_navbar";
 
 import AdminDashboardSubPage from "./admin_dashboard";
@@ -21,9 +21,11 @@ export default function AdminMain() {
       adminSubPageComponents[sub_page] || AdminDashboardSubPage;
 
    return (
-      <div className="flex flex-col w-full h-full">
-         <AdminNavbar />
-         <SubPageComponent />
-      </div>
+      <>
+         <div className="flex flex-col w-full h-full">
+            <AdminNavbar />
+            <SubPageComponent />
+         </div>
+      </>
    );
 }

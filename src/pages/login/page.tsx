@@ -8,9 +8,9 @@ export default function PageLogin(): JSX.Element {
       <>
          <PageLayout>
             <CategoryLayout>
-               <section className="flex flex-col h-full justify-center items-center">
+               <section className="flex flex-col items-center justify-center h-full">
                   <div className="w-full max-w-[300px] md:max-w-[300px] flex flex-col">
-                     <div className="w-full flex justify-center">
+                     <div className="flex justify-center w-full">
                         <Link to={"/"}>
                            <img
                               className="w-auto h-[120px] object-cover"
@@ -20,11 +20,11 @@ export default function PageLogin(): JSX.Element {
                         </Link>
                      </div>
                      <div className="flex flex-col w-full mb-[1rem] items-center">
-                        <p className="text-fs-m">Login</p>
-                        <p className="text-fs-s">here ye here ye ahh</p>
+                        <p className="text-fs-l">Login</p>
+                        <p className="text-fs-m">welcome back</p>
                      </div>
                      <LoginForm />
-                     <div className="flex flex-row gap-2 w-full justify-center">
+                     <div className="flex flex-row justify-center w-full gap-2">
                         <p className="text-secondary-low-opacity">
                            Dont have an account?
                         </p>
