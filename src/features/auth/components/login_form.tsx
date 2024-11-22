@@ -23,7 +23,7 @@ export default function LoginForm(): JSX.Element {
    const handle_response = async (response: any) => {
       console.log(response);
       if (response.message == "Login successful") {
-         navigate("/user");
+         navigate("/");
       } else {
          console.log("Error: ", response.error);
       }
@@ -54,7 +54,7 @@ export default function LoginForm(): JSX.Element {
          <button className="w-full h-[50px] flex  text-secondary hover:text-secondary-alt transition-hover-base bg-main rounded-sm hover:bg-main-alt mt-[1rem] mb-[0.5rem] justify-center items-center ">
             <div className="flex justify-center items-center gap-[0.2rem]">
                <p className="font-bold">Login</p>
-               <i className="bx bx-link-external font-bold"></i>
+               <i className="font-bold bx bx-link-external"></i>
             </div>
          </button>
       </form>

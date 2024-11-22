@@ -21,18 +21,20 @@ export default function RecommendedCatalog(): JSX.Element {
       <section className="category category_recommended_catalog">
          <CategoryLayout inner_name="in_cont_recommended_catalog">
             <section className="recommended_catalog">
-               <div className="recommended_catalog_grid flex flex-wrap">
+               <div className="flex flex-wrap recommended_catalog_grid">
                   <RenderList
                      data={food_list}
-                     render_item={(food: FoodInfo) => (
+                     render_item={(food: FoodInfo, i) => (
                         <FoodPreviewProfile
-                           key={food.id}
-                           id={food.id}
+                           key={i}
+                           food_id={food.food_id}
                            name={food.name}
                            price={food.price}
-                           short_desc={food.short_desc}
-                           long_desc={food.long_desc}
-                           image_paths={food.image_paths}
+                           desc_short={food.desc_short}
+                           desc_long={food.desc_long}
+                           image_path_base={food.image_path_base}
+                           image_path_hover={food.image_path_hover}
+                           allergies={food.allergies}
                         />
                      )}
                   />

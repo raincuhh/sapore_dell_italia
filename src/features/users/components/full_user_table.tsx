@@ -3,7 +3,6 @@ import { get_full_user_list as api_get_full_user_list } from "../api";
 import RenderList from "../../../shared/components/render_list";
 import Card from "../../../shared/components/card";
 import UserTableRow from "./user_table_row";
-import { UserCol } from "./user_col";
 
 import { User } from "../../../shared/lib/types";
 
@@ -42,7 +41,7 @@ export default function FullUserTable() {
                      <UserTableHeaderCol text="pass" />
                      <UserTableHeaderCol text="role" />
                      <UserTableHeaderCol text="jwt_vers" />
-                     <UserTableHeaderCol text="" />
+                     <UserTableHeaderCol text="actions" />
                   </div>
                </header>
                <RenderList

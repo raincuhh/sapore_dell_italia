@@ -50,3 +50,21 @@ export async function validate_jwt_token(jwt_token: string) {
       throw new Error("Validation failed");
    }
 }
+
+export async function increment_jwt_version(
+   user_id_: number
+): Promise<AxiosResponse<any>> {
+   try {
+      const response = await axios_instance.post(
+         "/src/features/auth/api/jwt_utils.php",
+         {
+            action: "increment_jwt_version",
+            user_id: user_id_,
+         }
+      );
+      return response;
+   } catch (err) {
+      console.error("Error incrementing JWT version: ", err);
+      throw new Error("Failed to increment JWT version");
+   }
+}

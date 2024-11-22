@@ -2,7 +2,7 @@ import CategoryLayout from "../../shared/components/category_layout";
 
 export default function Hero(): JSX.Element {
    return (
-      <section className="category category_hero">
+      <section className="pointer-events-none select-none category category_hero">
          <CategoryLayout inner_name="in_cont_hero">
             <section className="hero">
                <div className="hero_container flex w-full justify-center place-content-center overflow-hidden items-center relative gap-m-em-xs h-[594px]">
@@ -50,9 +50,9 @@ export default function Hero(): JSX.Element {
                         </p>
                      </div>
                   </div>
-                  <div className="hero_fading_panel absolute w-full h-full">
-                     <div className="top_fade"></div>
-                     <div className="bottom_fade"></div>
+                  <div className="absolute w-full h-full pointer-events-none select-none hero_fading_panel">
+                     <div className="pointer-events-none select-none top_fade"></div>
+                     <div className="pointer-events-none select-none bottom_fade"></div>
                   </div>
                   <div className="hero_arrow_tip">
                      <i className="bx bx-down-arrow-alt"></i>

@@ -11,6 +11,7 @@ export default function PageHome(): JSX.Element {
    return (
       <>
          <PageLayout>
+            <Navbar />
             <Hero />
             <ShortAbout />
             <RecommendedCatalog />

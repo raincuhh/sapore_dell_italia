@@ -16,22 +16,11 @@ export default function ShortAbout(): JSX.Element {
       useRef<HTMLParagraphElement>(null);
    const ref_thumbnail: React.RefObject<HTMLImageElement> =
       useRef<HTMLImageElement>(null);
-   const ref_thumbnail_box_shadow: React.RefObject<HTMLDivElement> =
-      useRef<HTMLDivElement>(null);
 
    useEffect(() => {
-      animate_paragraph(ref_category_short_about, ref_paragraph);
-      animate_thumbnail(
-         ref_category_short_about,
-         ref_thumbnail,
-         ref_thumbnail_box_shadow
-      );
-   }, [
-      ref_category_short_about,
-      ref_paragraph,
-      ref_thumbnail,
-      ref_thumbnail_box_shadow,
-   ]);
+      // animate_paragraph(ref_category_short_about, ref_paragraph);
+      // animate_thumbnail(ref_category_short_about, ref_thumbnail);
+   }, [ref_category_short_about, ref_paragraph, ref_thumbnail]);
 
    return (
       <section
@@ -53,10 +42,6 @@ export default function ShortAbout(): JSX.Element {
          </CategoryLayout>
          <div className="short_about_thumbnail mt-m-em-xs w-[100vw] flex relative justify-center items-center">
             <div className="short_about_thumbnail_centered w-[100%] flex relative justify-center items-center">
-               <div
-                  className="short_about_thumbnail_box_shadow pointer-events-none absolute w-[80%] z-[5]"
-                  ref={ref_thumbnail_box_shadow}
-               ></div>
                <img
                   src="./static/assets/images/italian_cuisine_bg_3.jpg"
                   alt="short about thumbnail"
@@ -105,14 +90,9 @@ function animate_paragraph(
 
 function animate_thumbnail(
    ref_category_short_about: React.RefObject<HTMLElement>,
-   ref_thumbnail: React.RefObject<HTMLImageElement>,
-   ref_thumbnail_box_shadow: React.RefObject<HTMLDivElement>
+   ref_thumbnail: React.RefObject<HTMLImageElement>
 ) {
-   if (
-      !ref_category_short_about.current ||
-      !ref_thumbnail.current ||
-      !ref_thumbnail_box_shadow.current
-   ) {
+   if (!ref_category_short_about.current || !ref_thumbnail.current) {
       return;
    }
 
@@ -129,14 +109,15 @@ function animate_thumbnail(
    tl.to(ref_thumbnail.current, {
       clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
       ease: "power1.inOut",
-   }).to(
-      ref_thumbnail_box_shadow.current,
-      {
-         width: "100%",
-         ease: "power1.inOut",
-      },
-      "<"
-   );
+   });
+   // .to(
+   //    ref_thumbnail_box_shadow.current,
+   //    {
+   //       width: "100%",
+   //       ease: "power1.inOut",
+   //    },
+   //    "<"
+   // );
 
    tl.add(() => {
       const nested_tl: GSAPTimeline = gsap.timeline({

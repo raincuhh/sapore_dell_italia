@@ -14,6 +14,7 @@ export default function ProtectedRoute({
    const location = useLocation();
 
    useEffect(() => {
+      if (loading) return;
       // redirect to /login path if user isnt authenticated, otherwise dont do anythng
       if (!is_authenticated) {
          localStorage.setItem("redirect_path", location.pathname);
@@ -21,10 +22,12 @@ export default function ProtectedRoute({
             replace: true,
             state: { from: location.pathname },
          });
+         return;
       }
       const url = location.pathname;
 
-      if (url.includes("/admin")) {
+      if (url.startsWith("/admin") && role !== "admin") {
+         navigate("/", { replace: true });
       }
    }, [is_authenticated, navigate, loading, location.pathname]);
 

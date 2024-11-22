@@ -26,22 +26,22 @@ export default function FoodPreviewProfile(profile: FoodInfo) {
       <>
          <div
             ref={ref_food_preview_profile}
-            className="food_preview_profile flex-1 w-full h-min"
+            className="flex-1 w-full food_preview_profile h-min"
             id={`food_preview_profile_${profile.name}`}
          >
-            <div className="food_preview_profile_wrapper w-full h-min">
+            <div className="w-full food_preview_profile_wrapper h-min">
                <Link
                   className="flex flex-col"
-                  to={`/booking?foodId=${profile.id}`}
+                  to={"/booking"}
                   rel="noopener noreferrer"
                >
-                  <div className="food_preview_img_cont flex flex-col relative">
+                  <div className="relative flex flex-col food_preview_img_cont">
                      <img
                         ref={ref_hover_img}
-                        className="w-full absolute opacity-0"
+                        className="absolute w-full opacity-0"
                         src={
-                           profile.image_paths && profile.image_paths.length > 0
-                              ? profile.image_paths[0]
+                           profile.image_path_base
+                              ? profile.image_path_base[0]
                               : "../img/path"
                         }
                         alt="food preview hover image"
@@ -49,8 +49,8 @@ export default function FoodPreviewProfile(profile: FoodInfo) {
                      <img
                         className="w-full"
                         src={
-                           profile.image_paths && profile.image_paths.length > 1
-                              ? profile.image_paths[1]
+                           profile.image_path_hover
+                              ? profile.image_path_hover[1]
                               : "../img/path"
                         }
                         alt="food preview base image"
@@ -59,10 +59,14 @@ export default function FoodPreviewProfile(profile: FoodInfo) {
                   <div className="flex flex-col">
                      <div className="flex justify-between mt-m-em-xxs">
                         <div>
-                           <p>{profile.name}</p>
+                           <p className="font-medium font-secondary text-fs-s">
+                              {profile.name}
+                           </p>
                         </div>
                         <div>
-                           <p>{profile.price}</p>
+                           <p className="font-medium font-secondary text-fs-s">
+                              {profile.price}
+                           </p>
                         </div>
                      </div>
                      <div
@@ -70,10 +74,14 @@ export default function FoodPreviewProfile(profile: FoodInfo) {
                         className="flex justify-between mt-m-em-xl text-secondary-low-opacity"
                      >
                         <div>
-                           <p>{profile.short_desc}</p>
+                           <p className="font-medium font-secondary text-fs-s">
+                              {profile.desc_short}
+                           </p>
                         </div>
                         <div className="flex items-center">
-                           <p>booking</p>
+                           <p className="font-medium font-secondary text-fs-s">
+                              booking
+                           </p>
                            <i
                               ref={ref_booking_arrow}
                               className="bx bx-right-arrow-alt"

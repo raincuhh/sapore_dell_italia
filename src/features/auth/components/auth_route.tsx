@@ -12,14 +12,16 @@ export default function AuthRoute({ children }: AuthRouteProps): JSX.Element {
 
    useEffect(() => {
       if (!loading && is_authenticated) {
-         console.log(role);
-         const redirectPath =
-            localStorage.getItem("redirect_path") ||
-            (role === "admin" ? "/admin" : "/");
+         const storedPath: string | null =
+            localStorage?.getItem("redirect_path");
 
-         if (redirectPath) {
+         const redirectPath: string =
+            storedPath || (role === "admin" ? "/admin" : "/user");
+
+         if (storedPath) {
             localStorage.removeItem("redirect_path");
          }
+
          navigate(redirectPath, { replace: true });
       }
    }, [is_authenticated, role, loading, navigate, location.state]);
@@ -27,7 +29,9 @@ export default function AuthRoute({ children }: AuthRouteProps): JSX.Element {
    if (loading) {
       return (
          <>
-            <div className="">loading...</div>
+            <div className="fixed flex items-center justify-center w-full h-full">
+               loading...
+            </div>
          </>
       );
    }

@@ -35,13 +35,13 @@ export function uppercaseify_sentences(str: string): string {
    return words.join(" ");
 }
 
-export function role_str_to_role_enum(str: string): UserRoles {
+export function role_str_to_role_enum(str: UserRoles): UserRoles {
    switch (str) {
-      case UserRoles.admin:
-         return UserRoles.admin;
-      case UserRoles.user:
-         return UserRoles.user;
+      case "admin":
+         return "admin";
+      case "user":
+         return "user";
       default:
-         return UserRoles.user;
+         return "user";
    }
 }

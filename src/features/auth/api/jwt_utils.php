@@ -1,4 +1,11 @@
 <?php
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+
+header("Access-Control-Allow-Origin: http://localhost:3000");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+header("Content-Type: application/json");
+
 require_once "../../../shared/lib/utils.php";
 require_once "../../../../vendor/autoload.php";
 
@@ -49,5 +56,22 @@ function increment_jwt_version($user_id): array
       "status" => 400,
       "data" => ["message" => "Internal server error", "error" => $err->getMessage()]
     ];
+  }
+}
+
+$input = json_decode(file_get_contents('php://input'), true);
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  $action = $input['action'] ?? null;
+
+  if ($action === 'increment_jwt_version') {
+    $user_id = intval($input['user_id'] ?? 0);
+    if ($user_id === 0) {
+      echo json_encode(["status" => 400, "message" => "User ID is required"]);
+      exit;
+    }
+
+    $response = increment_jwt_version($user_id);
+    echo json_encode($response);
+    exit;
   }
 }
