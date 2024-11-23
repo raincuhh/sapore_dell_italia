@@ -47,7 +47,7 @@ export default function Navbar() {
                   <BrandLogo to_link="/" className={"h-[36px]"} />
                   {!is_authenticated && (
                      <>
-                        <Link to="/login">Login</Link>
+                        <NavButton text="Login" href="/login" />
                      </>
                   )}
                   {is_authenticated && (

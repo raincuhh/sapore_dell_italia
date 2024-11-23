@@ -54,11 +54,8 @@ export default function Footer(): JSX.Element {
                      </div>
                   </div>
                </div>
-               <div className="flex flex-col justify-between gap-4 mt-16">
-                  <hr className="h-[1px] w-full bg-secondary-low-opacity" />
-                  <div className="flex items-center">
-                     ©2024 Sapore Dell'Italia
-                  </div>
+               <div className="flex items-center mt-16">
+                  ©2024 Sapore Dell'Italia
                </div>
             </footer>
          </CategoryLayout>
