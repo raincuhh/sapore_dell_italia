@@ -1,10 +1,12 @@
 import { AxiosResponse } from "axios";
 import { axios_instance } from "../../../shared/lib/axios_instance";
+import { UserRoles } from "../../../shared/lib/types";
 
 export async function register(
    username: string,
    password: string,
-   email: string
+   email: string,
+   role: UserRoles = "user" // "admin" | "user"
 ) {
    try {
       const response: AxiosResponse<any, any> = await axios_instance.post(
@@ -13,6 +15,7 @@ export async function register(
             username,
             password,
             email,
+            role,
          }
       );
       return response;

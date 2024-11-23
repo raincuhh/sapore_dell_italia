@@ -24,14 +24,13 @@ export default function RecommendedCatalog(): JSX.Element {
                <div className="flex flex-wrap recommended_catalog_grid">
                   <RenderList
                      data={food_list}
-                     render_item={(food: FoodInfo, i) => (
+                     render_item={(food: FoodInfo, i: number) => (
                         <FoodPreviewProfile
                            key={i}
                            food_id={food.food_id}
                            name={food.name}
                            price={food.price}
-                           desc_short={food.desc_short}
-                           desc_long={food.desc_long}
+                           desc={food.desc}
                            image_path_base={food.image_path_base}
                            image_path_hover={food.image_path_hover}
                            allergies={food.allergies}

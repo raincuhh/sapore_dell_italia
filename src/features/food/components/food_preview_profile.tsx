@@ -56,16 +56,16 @@ export default function FoodPreviewProfile(profile: FoodInfo) {
                         alt="food preview base image"
                      />
                   </div>
-                  <div className="flex flex-col">
-                     <div className="flex justify-between font-medium mt-m-em-xxs font-secondary text-fs-m">
+                  <div className="flex flex-col gap-8">
+                     <div className="flex justify-between mt-2 font-medium text-fs-m font-main">
                         <div>{profile.name}</div>
                         <div>{profile.price}</div>
                      </div>
                      <div
                         ref={ref_lower_info_cont}
-                        className="flex justify-between font-medium mt-m-em-xl text-secondary-low-opacity font-secondary text-fs-m"
+                        className="flex justify-between font-medium text-secondary-low-opacity text-fs-m font-main"
                      >
-                        <div>{profile.desc_short}</div>
+                        <div>{profile.desc}</div>
                         <div className="flex items-center">
                            <p>booking</p>
                            <i

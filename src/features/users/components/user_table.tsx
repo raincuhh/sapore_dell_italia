@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from "react";
-import { User } from "../../../shared/lib/types";
+import React, { useState, useEffect, useCallback } from "react";
+import { User, UserRoles } from "../../../shared/lib/types";
 import { use_form } from "../../../shared/hooks/use_form";
 import { DynamicForm } from "../../../shared/components/dynamic_form";
 import { GenericTable } from "../../../shared/components/generic_table";
 import { get_full_user_list as api_get_full_user_list } from "../api";
+import { register as api_register } from "../../auth/api";
 import UserDeleteButton from "./user_delete_button";
 
 export default function UserTable() {
    const [users, set_users] = useState<User[]>([]);
+   const [error, set_error] = useState<string | null>(null);
    const { form_data, handle_change, reset_form } = use_form<User>({
       user_id: 0,
       name: "",
@@ -17,30 +19,38 @@ export default function UserTable() {
       jwt_version: 0,
    });
 
-   const fetch_users = async () => {
+   const fetch_users = useCallback(async () => {
       try {
          const response: any = await api_get_full_user_list();
-         const users: User[] = response.data.users;
+         const fetched_users: User[] = response.data.users;
 
-         const sorted_users = users.sort(
+         const sorted_users = fetched_users.sort(
             (a: User, b: User) => a.user_id - b.user_id
          );
 
          set_users(sorted_users);
       } catch (err) {
          console.error("Error:", err);
-         throw new Error("Error fetching users");
+         set_error("Error fetching users");
       }
-   };
+   }, []);
 
    const handle_add_user = async () => {
-      reset_form();
-      fetch_users();
+      try {
+         console.log(form_data);
+         const { name: username, password, email, role } = form_data;
+         await api_register(username, password, email, role as UserRoles);
+         await fetch_users();
+
+         reset_form();
+      } catch (err) {
+         console.error("Error:", err);
+      }
    };
 
    useEffect(() => {
       fetch_users();
-   }, []);
+   }, [fetch_users]);
 
    return (
       <>

@@ -1,8 +1,14 @@
 /** @type {import('tailwindcss').Config} */
+
 module.exports = {
    content: ["./src/**/*.{js,jsx,ts,tsx}"],
    theme: {
       extend: {
+         screens: {
+            xs: "470px",
+            "sm-md": "500px",
+            "md-sm": "600px",
+         },
          colors: {
             bg: "rgba(28, 33, 38, 1)",
             "bg-secondary": "rgba(38, 43, 48, 1)",
@@ -30,16 +36,16 @@ module.exports = {
             "max-width": "clamp(76rem, 53vw, 84rem)",
          },
          fontSize: {
-            "fs-xxs": "0.625rem", // 10px
-            "fs-xs": "0.75rem", // 12px
-            "fs-s": "0.875rem", // 14px
-            "fs-m": "1rem", // 16px
-            "fs-l": "1.5rem", // 24px
-            "fs-xl": "2rem", // 32px
-            "fs-2xl": "3rem", // 48px
-            "fs-3xl": "4.5rem", // 72px
-            "fs-4xl": "6.75rem", // 108px
-            "fs-5xl": "10.125rem", // 162px
+            "fs-xxs": "0.625rem",
+            "fs-xs": "0.75rem",
+            "fs-s": "0.875rem",
+            "fs-m": "1rem",
+            "fs-l": "1.5rem",
+            "fs-xl": "2rem",
+            "fs-2xl": "2.5rem",
+            "fs-3xl": "3.5rem",
+            "fs-4xl": "5.5rem",
+            "fs-5xl": "7.125rem",
          },
          zIndex: {
             loader: "4000",
@@ -53,8 +59,7 @@ module.exports = {
             raleway: ['"Raleway"', "sans-serif"],
             inter: ['"Inter"', "sans-serif"],
             playfair: ['"Playfair Display"', "serif"],
-            main: ['"Montserrat"', "sans-serif"],
-            secondary: ['"Hind"', "sans-serif"],
+            main: ['"Satoshi-Variable"', "sans-serif"],
          },
          transitionProperty: {
             "hover-base": "all",

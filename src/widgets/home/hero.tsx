@@ -11,7 +11,7 @@ export default function Hero(): JSX.Element {
                      <p>We are</p>
                   </header>
                   <div className="hero_title_list">
-                     <div className="hero_title_list_inner flex justify-end flex-col items-start h-[32px] gap-m-em-s text-fs-m sm:text-fs-xl md:text-fs-2xl">
+                     <div className="hero_title_list_inner font-main font-medium flex justify-end flex-col items-start h-[32px] gap-m-em-s text-fs-[33px] sm:text-fs-xl md:text-fs-2xl">
                         <p className="h1">an italian restaurant.</p>
                         <p className="h1">an inviting escape.</p>
                         <p className="h1">passionate.</p>

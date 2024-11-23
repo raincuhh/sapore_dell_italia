@@ -17,7 +17,7 @@ export function DynamicForm<T>({
    submitLabel,
 }: DynamicFormProps<T>): JSX.Element {
    return (
-      <Card className="sm:max-w-full w-full overflow-y-scroll bg-bg-secondary max-w-[56rem]">
+      <Card className="sm:max-w-full w-full overflow-scroll bg-bg-secondary max-w-[50rem]">
          <form
             onSubmit={(e) => {
                e.preventDefault();
@@ -44,7 +44,7 @@ export function DynamicForm<T>({
             ))}
             <button
                type="submit"
-               // className="w-full h-[50px] flex  text-secondary hover:text-secondary-alt transition-hover-base bg-main rounded-sm hover:bg-main-alt justify-center items-center"
+               className="w-full h-[50px] flex  text-secondary hover:text-secondary-alt transition-hover-base bg-main rounded-sm hover:bg-main-alt justify-center items-center"
             >
                {submitLabel}
             </button>

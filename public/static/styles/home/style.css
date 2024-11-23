@@ -56,15 +56,12 @@
    display: block;
    margin: 0;
    padding: 0;
-   /* font-size: var(--s-fs-hero-s); */
-   color: var(--s-secondary);
-   font-family: var(--s-main-ff);
+
    white-space: nowrap;
 }
 
 .hero_title_list .hero_title_list_inner .h1 span {
    color: var(--s-main) !important;
-   font-style: italic;
 }
 
 .hero_fading_panel .top_fade {
@@ -113,8 +110,6 @@
 }
 
 .short_about .short_about_paragraph > p {
-   font-family: var(--s-main-ff);
-   font-size: var(--s-fs-m);
    /* color: rgba(240, 232, 227, 0.103); */
    color: var(--s-secondary);
    transition: color 0.5s ease;

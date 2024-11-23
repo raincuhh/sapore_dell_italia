@@ -52,7 +52,7 @@ export default function LoginForm(): JSX.Element {
             />
          </div>
          <button className="w-full h-[50px] flex  text-secondary hover:text-secondary-alt transition-hover-base bg-main rounded-sm hover:bg-main-alt mt-[1rem] mb-[0.5rem] justify-center items-center ">
-            <div className="flex justify-center items-center gap-[0.2rem]">
+            <div className="flex justify-center items-center gap-[0.2rem] font-main">
                <p className="font-bold">Login</p>
                <i className="font-bold bx bx-link-external"></i>
             </div>

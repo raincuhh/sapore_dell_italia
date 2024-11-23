@@ -4,6 +4,9 @@
 
 :root {
    --s-bg: rgba(28, 33, 38, 1);
+   --s-bg-secondary: rgba(38, 43, 48, 1);
+   --s-bg-secondary-alt: rgba(48, 53, 58, 1);
+   --s-bg-secondary-alt-hover: rgba(58, 63, 68, 1);
    --s-white: rgba(255, 255, 255, 1);
    --s-light: rgba(239, 232, 227, 1);
    --s-dark: rgba(23, 27, 31, 1);
@@ -86,7 +89,14 @@ summary {
 }
 
 ::-webkit-scrollbar {
-   display: none;
+   width: 15px;
+}
+
+::-webkit-scrollbar-track {
+   background: var(--s-bg);
+}
+::-webkit-scrollbar-thumb {
+   background: var(--s-bg-secondary-alt-hover);
 }
 
 a {

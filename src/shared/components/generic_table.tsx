@@ -14,18 +14,14 @@ export function GenericTable<T>({
 }: GenericTableProps<T>) {
    return (
       <>
-         <Card className="overflow-y-scroll bg-bg-secondary max-w-[56rem]">
-            <table
-            // className="table-auto"
-            >
-               <thead
-               // className="border-b-[1px] border-r-[1px] border-solid border-secondary-low-opacity"
-               >
+         <Card className="sm:max-w-full w-full overflow-scroll bg-bg-secondary max-w-[50rem]">
+            <table>
+               <thead className="border-b-[1px] border-r-[1px] border-solid border-secondary-low-opacity">
                   <tr>
-                     {columns.map((col) => (
+                     {columns.map((col: keyof T) => (
                         <th
                            key={col as string}
-                           // className="p-2 border"
+                           className="px-2 border-solid border-secondary-low-opacity border-r-[1px] text-start"
                         >
                            {col as React.ReactNode}
                         </th>
@@ -40,7 +36,7 @@ export function GenericTable<T>({
                   </tr>
                </thead>
                <tbody>
-                  {data.map((item, index) => (
+                  {data.map((item: T, index: number) => (
                      <tr key={index}>
                         {columns.map((col) => (
                            <td

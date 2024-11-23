@@ -30,7 +30,7 @@ export default function ShortAbout(): JSX.Element {
          <CategoryLayout inner_name="in_cont_short_about">
             <section className="short_about">
                <div className="short_about_paragraph">
-                  <p ref={ref_paragraph}>
+                  <p ref={ref_paragraph} className="font-main text-fs-l">
                      Welcome to Il Sapore dell'Italia, where every meal is a
                      celebration of authentic Italian flavors crafted with
                      passion. Join us as we take you on a culinary journey

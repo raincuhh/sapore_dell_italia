@@ -1,6 +1,6 @@
 type RenderListProps<T> = {
    data: T[];
-   render_item: (item: T, i?: number) => React.ReactNode;
+   render_item: (item: T, i: number) => React.ReactNode;
 };
 
 export default function RenderList<T>({
