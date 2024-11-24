@@ -3,22 +3,13 @@ import { use_form } from "../../../shared/hooks/use_form";
 import { DynamicForm } from "../../../shared/components/dynamic_form";
 import { GenericTable } from "../../../shared/components/generic_table";
 import { add_food } from "../api";
-// import {
-//    update_food as api_update_food,
-//    get_full_food_list as api_get_full_food_list,
-// } from "../api";
-// import FoodDeleteButton from "./food_delete_button";
+import {
+   update_food as api_update_food,
+   get_full_food_list as api_get_full_food_list,
+} from "../api";
 import { use_inline_edit } from "../../../shared/hooks/use_inline_edit";
-
-type Food = {
-   food_id: number;
-   name: string;
-   price: string;
-   desc?: string;
-   image_path_base?: string;
-   image_path_hover?: string;
-   allergies: string;
-};
+import { Food } from "../lib/types";
+import FoodDeleteButton from "./food_delete_button";
 
 export default function FoodTable() {
    const [foods, set_foods] = useState<Food[]>([]);
@@ -28,6 +19,7 @@ export default function FoodTable() {
       name: "",
       price: "",
       desc: "",
+      type: "main",
       image_path_base: "",
       image_path_hover: "",
       allergies: "",
@@ -35,13 +27,13 @@ export default function FoodTable() {
 
    const fetch_foods = useCallback(async () => {
       try {
-         //const response: any = await api_get_full_food_list();
-         //  const fetched_foods: Food[] = response.data.foods;
-         //  const sorted_foods = fetched_foods.sort(
-         //     (a: Food, b: Food) => a.food_id - b.food_id
-         //  );
-         //  set_foods(sorted_foods);
-         //  set_data(sorted_foods);
+         const response: any = await api_get_full_food_list();
+         const fetched_foods: Food[] = response.data.foods;
+         const sorted_foods = fetched_foods.sort(
+            (a: Food, b: Food) => a.food_id - b.food_id
+         );
+         set_foods(sorted_foods);
+         set_data(sorted_foods);
       } catch (err) {
          console.error("Error:", err);
          set_error("Error fetching foods");
@@ -50,7 +42,15 @@ export default function FoodTable() {
 
    const handle_add_food = async () => {
       try {
-         await add_food(form_data);
+         await add_food(
+            form_data.name,
+            form_data.price,
+            form_data.desc || "",
+            form_data.type,
+            form_data.image_path_base || "",
+            form_data.image_path_hover || "",
+            form_data.allergies
+         );
          await fetch_foods();
          reset_form();
       } catch (err) {
@@ -61,7 +61,7 @@ export default function FoodTable() {
    const { set_data, handle_edit_field } = use_inline_edit<Food>({
       initial_data: [],
       api_update: async (food: Food, field: keyof Food, value: any) => {
-         //  await api_update_food(food.food_id, field, value);
+         await api_update_food(food.food_id, field, value);
       },
    });
 
@@ -81,6 +81,7 @@ export default function FoodTable() {
                   "name",
                   "price",
                   "desc",
+                  "type",
                   "image_path_base",
                   "image_path_hover",
                   "allergies",
@@ -99,6 +100,7 @@ export default function FoodTable() {
                   "name",
                   "price",
                   "desc",
+                  "type",
                   "image_path_base",
                   "image_path_hover",
                   "allergies",
@@ -107,19 +109,42 @@ export default function FoodTable() {
                   "name",
                   "price",
                   "desc",
+                  "type",
                   "image_path_base",
                   "image_path_hover",
                   "allergies",
                ]}
                on_edit_field={handle_edit_field}
-               //  actions={(food: Food) => (
-               //     <FoodDeleteButton
-               //        food_id={food.food_id}
-               //        update_foods={fetch_foods}
-               //     />
-               //  )}
+               actions={(food: Food) => (
+                  <FoodDeleteButton
+                     food_id={food.food_id}
+                     update_foods={fetch_foods}
+                  />
+               )}
             />
          </div>
       </>
    );
 }
+
+// allergies
+
+// "Contains gluten"
+// desc
+
+// "A classic pizza with tomato sauce, fresh mozzarella and basil."
+// food_id
+
+// 0
+// image_path_base
+
+// "./static/assets/images/foods/pizza_margherita_base.jpg"
+// image_path_hover
+
+// "./static/assets/images/foods/pizza_margherita_hover.jpg"
+// name
+
+// "pizza margherita"
+// price
+
+// "12.9

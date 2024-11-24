@@ -19,14 +19,14 @@ export function GenericTable<T>({
    return (
       <>
          <Card className="w-min">
-            <div>
+            <div className="overflow-scroll max-w-[308px] sm:max-w-lg md:max-w-full max-h-[40rem] w-full">
                <table className="bg-bg-secondary">
                   <thead className="border-b-[1px] border-r-[1px] border-solid border-secondary-low-opacity">
                      <tr>
                         {columns.map((col: keyof T) => (
                            <th
                               key={col as string}
-                              className="px-4 py-2 border-solid border-secondary-low-opacity border-r-[1px] text-start bg-bg-secondary-alt"
+                              className="sm:px-4 sm:py-2 border-solid border-secondary-low-opacity border-r-[1px] text-start bg-bg-secondary-alt"
                            >
                               {col as React.ReactNode}
                            </th>
@@ -74,12 +74,12 @@ export function GenericTable<T>({
                                              }
                                           }}
                                           required
-                                          className="py-2 pl-4 max-w-30 cursor-text focus:outline-none focus:bg-bg-secondary-alt hover:bg-bg-secondary-alt"
+                                          className="overflow-y-scroll max-w-[5rem] md:max-w-[7rem] sm:py-2 sm:pl-4 w-min cursor-text focus:outline-none focus:bg-bg-secondary-alt hover:bg-bg-secondary-alt"
                                        />
                                     </>
                                  ) : (
                                     <>
-                                       <div className="px-4 py-2">
+                                       <div className="sm:px-4 sm:py-2">
                                           {item[col] as React.ReactNode}
                                        </div>
                                     </>

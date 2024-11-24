@@ -1,9 +1,9 @@
 import React, { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import gsap from "gsap";
-import { FoodInfo } from "../lib/types";
+import { Food } from "../lib/types";
 
-export default function FoodPreviewProfile(profile: FoodInfo) {
+export default function FoodPreviewProfile(profile: Food) {
    const ref_food_preview_profile: React.RefObject<HTMLDivElement> =
       useRef<HTMLDivElement>(null);
    const ref_booking_arrow: React.RefObject<HTMLDivElement> =
@@ -58,7 +58,9 @@ export default function FoodPreviewProfile(profile: FoodInfo) {
                   </div>
                   <div className="flex flex-col gap-8">
                      <div className="flex justify-between mt-2 font-medium text-fs-m font-main">
-                        <div>{profile.name}</div>
+                        <div className="flex gap-2">
+                           {profile.name} {profile.type}
+                        </div>
                         <div>{profile.price}</div>
                      </div>
                      <div

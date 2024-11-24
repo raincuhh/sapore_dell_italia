@@ -8,7 +8,7 @@ export default function AdminSubPageLayout({
    return (
       <>
          <div className="h-full">
-            <div className="h-full px-6 py-4 overflow-scroll max-h-dvh pt-[52.9px]">
+            <div className="h-full px-6 py-4 overflow-x-scroll max-h-dvh pt-[52.9px]">
                {children}
             </div>
          </div>

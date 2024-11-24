@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import CategoryLayout from "../../shared/components/category_layout";
 import FoodPreviewProfile from "../../features/food/components/food_preview_profile";
 import { fetch_recommended_food_list_test } from "../../features/food/api";
-import { FoodInfo } from "../../features/food/lib/types";
+import { Food } from "../../features/food/lib/types";
 import RenderList from "../../shared/components/render_list";
 
 export default function RecommendedCatalog(): JSX.Element {
@@ -24,13 +24,14 @@ export default function RecommendedCatalog(): JSX.Element {
                <div className="flex flex-wrap recommended_catalog_grid">
                   <RenderList
                      data={food_list}
-                     render_item={(food: FoodInfo, i: number) => (
+                     render_item={(food: Food, i: number) => (
                         <FoodPreviewProfile
                            key={i}
                            food_id={food.food_id}
                            name={food.name}
                            price={food.price}
                            desc={food.desc}
+                           type={food.type}
                            image_path_base={food.image_path_base}
                            image_path_hover={food.image_path_hover}
                            allergies={food.allergies}

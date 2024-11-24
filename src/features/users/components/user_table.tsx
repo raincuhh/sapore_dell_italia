@@ -25,11 +25,9 @@ export default function UserTable() {
       try {
          const response: any = await api_get_full_user_list();
          const fetched_users: User[] = response.data.users;
-
          const sorted_users = fetched_users.sort(
             (a: User, b: User) => a.user_id - b.user_id
          );
-
          set_users(sorted_users);
          set_data(sorted_users);
       } catch (err) {
@@ -40,7 +38,6 @@ export default function UserTable() {
 
    const handle_add_user = async () => {
       try {
-         console.log(form_data);
          const { name: username, password, email, role } = form_data;
          await api_register(username, password, email, role as UserRoles);
          await fetch_users();
@@ -57,8 +54,6 @@ export default function UserTable() {
          await api_update_user(user.user_id, field, value);
       },
    });
-
-   useEffect(() => {}, []);
 
    useEffect(() => {
       fetch_users().catch(console.error);
@@ -77,7 +72,7 @@ export default function UserTable() {
                onSubmit={handle_add_user}
                submitLabel="Add User"
             />
-            <header className="pt-8 font-bold font-main text-fs-l">
+            <header className="pt-8 mb-2 font-bold font-main text-fs-l">
                User list
             </header>
             <GenericTable

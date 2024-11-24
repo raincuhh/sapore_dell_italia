@@ -6,8 +6,9 @@ import { use_auth } from "../lib/utils";
 export default function LoginForm(): JSX.Element {
    const { login } = use_auth();
 
-   const [username, set_username] = useState("");
-   const [password, set_password] = useState("");
+   const [msg, set_msg] = useState<string>("");
+   const [username, set_username] = useState<string>("");
+   const [password, set_password] = useState<string>("");
    const navigate = useNavigate();
 
    const handle_form_submit = async (e: React.FormEvent) => {
@@ -22,6 +23,11 @@ export default function LoginForm(): JSX.Element {
 
    const handle_response = async (response: any) => {
       console.log(response);
+      if (!response.message) {
+         console.log("Error", response.error);
+      }
+      set_msg(response.message);
+
       if (response.message == "Login successful") {
          navigate("/");
       } else {
@@ -36,6 +42,9 @@ export default function LoginForm(): JSX.Element {
          onSubmit={handle_form_submit}
       >
          <div className="flex flex-col w-full gap-[2px]">
+            <div className="items-start w-full text-red-500 font-main">
+               {msg}
+            </div>
             <AuthFormInput
                input_type="text"
                input_value={username}
