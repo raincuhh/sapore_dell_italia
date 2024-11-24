@@ -36,7 +36,7 @@ export default function UserDeleteButton({
          <div className="flex items-center justify-center ">
             <button
                onClick={handleDelete}
-               className="w-full bg-red-600 rounded-sm text-secondary"
+               className="w-full bg-red-600 rounded-sm hover:bg-red-500 text-secondary"
                disabled={loading}
             >
                {loading ? (

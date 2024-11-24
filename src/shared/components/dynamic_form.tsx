@@ -17,38 +17,34 @@ export function DynamicForm<T>({
    submitLabel,
 }: DynamicFormProps<T>): JSX.Element {
    return (
-      <Card className="sm:max-w-full w-full overflow-scroll bg-bg-secondary max-w-[50rem]">
-         <form
-            onSubmit={(e) => {
-               e.preventDefault();
-               onSubmit();
-            }}
-            // className="flex flex-col gap-4"
+      <form
+         onSubmit={(e) => {
+            e.preventDefault();
+            onSubmit();
+         }}
+         className="flex flex-col max-w-sm"
+      >
+         {fields.map((field: keyof T) => (
+            <div key={field as string} className="mt-4">
+               <label htmlFor={field as string}>
+                  <div className="font-medium text-fs-m font-main">
+                     {uppercaseify(field as string)}
+                  </div>
+                  <input
+                     type="text"
+                     value={data[field] as any}
+                     onChange={(e) => onChange(field, e.target.value)}
+                     className="w-full px-4 py-2 border-[1px] border-solid border-secondary-low-opacity bg-bg-secondary focus:outline-none rounded-sm"
+                  />
+               </label>
+            </div>
+         ))}
+         <button
+            type="submit"
+            className="w-full h-[50px] flex text-secondary mt-8 hover:text-secondary-alt transition-hover-base bg-main rounded-sm hover:bg-main-alt justify-center items-center font-main text-fs-m"
          >
-            {fields.map((field: keyof T) => (
-               <div key={field as string}>
-                  <label>
-                     <div
-                     // className="font-medium text-fs-m font-main"
-                     >
-                        {uppercaseify(field as string)}
-                     </div>
-                     <input
-                        type="text"
-                        value={data[field] as any}
-                        onChange={(e) => onChange(field, e.target.value)}
-                        // className="w-full px-4 py-2 border-[1px] border-solid border-secondary-low-opacity bg-bg-secondary focus:outline-none rounded-sm"
-                     />
-                  </label>
-               </div>
-            ))}
-            <button
-               type="submit"
-               className="w-full h-[50px] flex  text-secondary hover:text-secondary-alt transition-hover-base bg-main rounded-sm hover:bg-main-alt justify-center items-center"
-            >
-               {submitLabel}
-            </button>
-         </form>
-      </Card>
+            {submitLabel}
+         </button>
+      </form>
    );
 }
