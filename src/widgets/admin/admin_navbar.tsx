@@ -20,7 +20,7 @@ export default function AdminNavbar() {
 
    return (
       <>
-         <nav className="h-min w-full border-b-[1px] border-solid border-secondary-low-opacity py-2 px-2 sm:px-4 bg-bg-secondary">
+         <nav className="sm:left-14 h-min w-full border-b-[1px] border-solid border-secondary-low-opacity py-2 px-2 sm:px-4 bg-bg-secondary fixed top-0 right-0">
             <div className="flex items-center gap-2 h-[36px]">
                <BrandLogo
                   to_link="/"

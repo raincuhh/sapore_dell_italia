@@ -54,9 +54,7 @@ export default function Footer(): JSX.Element {
                      </div>
                   </div>
                </div>
-               <div className="flex items-center mt-16">
-                  ©2024 Sapore Dell'Italia
-               </div>
+               <div className="mt-16">©2024 Sapore Dell'Italia</div>
             </footer>
          </CategoryLayout>
       </section>

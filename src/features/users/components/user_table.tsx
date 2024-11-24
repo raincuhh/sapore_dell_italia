@@ -5,7 +5,9 @@ import { DynamicForm } from "../../../shared/components/dynamic_form";
 import { GenericTable } from "../../../shared/components/generic_table";
 import { get_full_user_list as api_get_full_user_list } from "../api";
 import { register as api_register } from "../../auth/api";
+import { update_user as api_update_user } from "../api";
 import UserDeleteButton from "./user_delete_button";
+import { use_inline_edit } from "../../../shared/hooks/use_inline_edit";
 
 export default function UserTable() {
    const [users, set_users] = useState<User[]>([]);
@@ -29,6 +31,7 @@ export default function UserTable() {
          );
 
          set_users(sorted_users);
+         set_data(sorted_users);
       } catch (err) {
          console.error("Error:", err);
          set_error("Error fetching users");
@@ -48,13 +51,25 @@ export default function UserTable() {
       }
    };
 
+   const { set_data, handle_edit_field } = use_inline_edit<User>({
+      initial_data: [],
+      api_update: async (user: User, field: keyof User, value: any) => {
+         await api_update_user(user.user_id, field, value);
+      },
+   });
+
+   useEffect(() => {}, []);
+
    useEffect(() => {
-      fetch_users();
+      fetch_users().catch(console.error);
    }, [fetch_users]);
 
    return (
       <>
-         <div className="flex flex-col gap-4">
+         <div className="flex flex-col overflow-hidden pt-[52.9px] sm:pt-0">
+            <header className="pt-8 font-bold font-main text-fs-l">
+               Create user
+            </header>
             <DynamicForm
                data={form_data}
                fields={["name", "email", "password", "role"]}
@@ -62,9 +77,14 @@ export default function UserTable() {
                onSubmit={handle_add_user}
                submitLabel="Add User"
             />
+            <header className="pt-8 font-bold font-main text-fs-l">
+               User list
+            </header>
             <GenericTable
                data={users}
                columns={["user_id", "name", "password", "email", "role"]}
+               editable_columns={["name", "password", "email", "role"]}
+               on_edit_field={handle_edit_field}
                actions={(user: User) => (
                   <UserDeleteButton
                      user_id={user.user_id}
