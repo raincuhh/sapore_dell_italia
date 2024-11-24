@@ -55,13 +55,13 @@ export function GenericTable<T>({
                                           type="text"
                                           autoCorrect="false"
                                           defaultValue={item[col] as any}
-                                          onBlur={(e) => {
-                                             on_edit_field?.(
-                                                item,
-                                                col,
-                                                e.target.value
-                                             );
-                                          }}
+                                          // onBlur={(e) => {
+                                          //    on_edit_field?.(
+                                          //       item,
+                                          //       col,
+                                          //       e.target.value
+                                          //    );
+                                          // }}
                                           onKeyDown={(e) => {
                                              if (e.key === "Enter") {
                                                 on_edit_field?.(

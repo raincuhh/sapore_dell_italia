@@ -76,7 +76,7 @@ export default function AuthProvider({
          console.log(decoded_id);
          await api_increment_jwt_version(decoded_id);
          localStorage.removeItem("jwt_token");
-         window.location.reload();
+         // window.location.reload();
       } catch (err) {
          console.error("Error: ", err);
       }

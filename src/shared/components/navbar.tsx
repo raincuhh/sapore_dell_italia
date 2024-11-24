@@ -48,10 +48,12 @@ export default function Navbar() {
                   {!is_authenticated && (
                      <>
                         <NavButton text="Login" href="/login" />
+                        <NavButton text="Booking" href="/booking" />
                      </>
                   )}
                   {is_authenticated && (
                      <>
+                        <NavButton text="Booking" href="/booking" />
                         <NavButton text="Profile" href="/user" />
                         {is_admin(role) && (
                            <>

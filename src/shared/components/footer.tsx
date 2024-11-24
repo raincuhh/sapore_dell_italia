@@ -2,6 +2,8 @@ import { PropsWithChildren } from "react";
 import CategoryLayout from "./category_layout";
 import SocialList from "./social_list";
 import { Link } from "react-router-dom";
+import { is_admin } from "../../features/users/lib/perms";
+import { use_auth } from "../../features/auth/lib/utils";
 
 type FooterLinkProps = PropsWithChildren & {
    className?: string;
@@ -20,6 +22,8 @@ function FooterLink({ children, className, href }: FooterLinkProps) {
 }
 
 export default function Footer(): JSX.Element {
+   const { role, is_authenticated } = use_auth();
+
    return (
       <section id="footer" className="pb-12 mt-16">
          <CategoryLayout>
@@ -42,8 +46,14 @@ export default function Footer(): JSX.Element {
                      <header className="text-main">sitemap</header>
                      <div className="flex flex-col text-secondary">
                         <FooterLink href="/">home</FooterLink>
-                        <FooterLink href="/user">profile</FooterLink>
                         <FooterLink href="/booking">booking</FooterLink>
+                        {is_authenticated && (
+                           <FooterLink href="/user">profile</FooterLink>
+                        )}
+
+                        {is_admin(role) && is_authenticated && (
+                           <FooterLink href="/admin">admin</FooterLink>
+                        )}
                      </div>
                   </div>
                   <div className="flex flex-col gap-2 font-medium font-main text-fs-m sm:text-fs-l">
