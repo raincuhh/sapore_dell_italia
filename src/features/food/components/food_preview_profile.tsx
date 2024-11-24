@@ -3,7 +3,11 @@ import { Link } from "react-router-dom";
 import gsap from "gsap";
 import { Food } from "../lib/types";
 
-export default function FoodPreviewProfile(profile: Food) {
+type FoodPreviewProfileProps = {
+   food: Food;
+};
+
+export default function FoodPreviewProfile({ food }: FoodPreviewProfileProps) {
    const ref_food_preview_profile: React.RefObject<HTMLDivElement> =
       useRef<HTMLDivElement>(null);
    const ref_booking_arrow: React.RefObject<HTMLDivElement> =
@@ -27,7 +31,7 @@ export default function FoodPreviewProfile(profile: Food) {
          <div
             ref={ref_food_preview_profile}
             className="flex-1 w-full food_preview_profile h-min"
-            id={`food_preview_profile_${profile.name}`}
+            id={`food_preview_profile_${food.name}`}
          >
             <div className="w-full food_preview_profile_wrapper h-min">
                <Link
@@ -35,39 +39,30 @@ export default function FoodPreviewProfile(profile: Food) {
                   to={"/booking"}
                   rel="noopener noreferrer"
                >
-                  <div className="relative flex flex-col food_preview_img_cont">
+                  <div className="relative w-full aspect-[16/9] max-h-[300px] h-[150px] md:h-full overflow-hidden">
                      <img
-                        ref={ref_hover_img}
-                        className="absolute w-full opacity-0"
-                        src={
-                           profile.image_path_base
-                              ? profile.image_path_base
-                              : "../img/path"
-                        }
-                        alt="food preview hover image"
+                        src={food.img_path_base}
+                        alt="food hover image"
+                        className="absolute inset-0 object-cover w-full h-full opacity-100 hover:opacity-100"
                      />
                      <img
-                        className="w-full"
-                        src={
-                           profile.image_path_hover
-                              ? profile.image_path_hover
-                              : "../img/path"
-                        }
-                        alt="food preview base image"
+                        src={food.img_path_hover}
+                        alt="food base image"
+                        className="absolute inset-0 object-cover w-full h-full select-none"
                      />
                   </div>
                   <div className="flex flex-col gap-8">
                      <div className="flex justify-between mt-2 font-medium text-fs-m font-main">
                         <div className="flex gap-2">
-                           {profile.name} {profile.type}
+                           {food.name} {food.type}
                         </div>
-                        <div>{profile.price}</div>
+                        <div>{food.price}</div>
                      </div>
                      <div
                         ref={ref_lower_info_cont}
                         className="flex justify-between font-medium text-secondary-low-opacity text-fs-m font-main"
                      >
-                        <div>{profile.desc}</div>
+                        <div>{food.desc}</div>
                         <div className="flex items-center">
                            <p>booking</p>
                            <i

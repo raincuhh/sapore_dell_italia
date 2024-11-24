@@ -20,8 +20,8 @@ export default function FoodTable() {
       price: "",
       desc: "",
       type: "main",
-      image_path_base: "",
-      image_path_hover: "",
+      img_path_base: "",
+      img_path_hover: "",
       allergies: "",
    });
 
@@ -47,8 +47,8 @@ export default function FoodTable() {
             form_data.price,
             form_data.desc || "",
             form_data.type,
-            form_data.image_path_base || "",
-            form_data.image_path_hover || "",
+            form_data.img_path_base || "",
+            form_data.img_path_hover || "",
             form_data.allergies
          );
          await fetch_foods();
@@ -82,8 +82,8 @@ export default function FoodTable() {
                   "price",
                   "desc",
                   "type",
-                  "image_path_base",
-                  "image_path_hover",
+                  "img_path_base",
+                  "img_path_hover",
                   "allergies",
                ]}
                onChange={handle_change}
@@ -101,8 +101,8 @@ export default function FoodTable() {
                   "price",
                   "desc",
                   "type",
-                  "image_path_base",
-                  "image_path_hover",
+                  "img_path_base",
+                  "img_path_hover",
                   "allergies",
                ]}
                editable_columns={[
@@ -110,8 +110,8 @@ export default function FoodTable() {
                   "price",
                   "desc",
                   "type",
-                  "image_path_base",
-                  "image_path_hover",
+                  "img_path_base",
+                  "img_path_hover",
                   "allergies",
                ]}
                on_edit_field={handle_edit_field}
@@ -136,10 +136,10 @@ export default function FoodTable() {
 // food_id
 
 // 0
-// image_path_base
+// img_path_base
 
 // "./static/assets/images/foods/pizza_margherita_base.jpg"
-// image_path_hover
+// img_path_hover
 
 // "./static/assets/images/foods/pizza_margherita_hover.jpg"
 // name

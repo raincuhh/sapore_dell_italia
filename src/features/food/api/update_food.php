@@ -32,7 +32,7 @@ function update_food(int $food_id, string $field, $value): array
 {
   global $conn;
 
-  $allowed_fields = ["name", "price", "desc", "type", "image_path_base", "image_path_hover", "allergies"];
+  $allowed_fields = ["name", "price", "desc", "type", "img_path_base", "image_path_hover", "allergies"];
 
   if (!in_array($field, $allowed_fields)) {
     return [

@@ -2,12 +2,12 @@ import axios, { AxiosResponse } from "axios";
 import { axios_instance } from "../../../shared/lib/axios_instance";
 import { Food } from "../lib/types";
 
-export async function fetch_recommended_food_list_test(): Promise<any> {
+export async function get_recommended_food_list(): Promise<any> {
    try {
       const response: AxiosResponse<any, any> = await axios_instance.get(
-         "/src/features/food/api/fetch_recommended_food_list_test.php"
+         "/src/features/food/api/get_recommended_food_list.php"
       );
-      return response.data;
+      return response;
    } catch (err) {
       console.error(`Error fetching recommended food list: ${err}`);
       throw new Error("Failed fetching food list");
@@ -19,8 +19,8 @@ export async function add_food(
    price: string,
    desc: string,
    type: string,
-   image_path_base: string,
-   image_path_hover: string,
+   img_path_base: string,
+   img_path_hover: string,
    allergies: string
 ): Promise<any> {
    try {
@@ -31,8 +31,8 @@ export async function add_food(
             price,
             desc,
             type,
-            image_path_base,
-            image_path_hover,
+            img_path_base,
+            img_path_hover,
             allergies,
          }
       );

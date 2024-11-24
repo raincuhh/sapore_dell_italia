@@ -29,7 +29,7 @@ export default function ProtectedRoute({
       if (url.startsWith("/admin") && role !== "admin") {
          navigate("/", { replace: true });
       }
-   }, [is_authenticated, navigate, loading, location.pathname]);
+   }, [is_authenticated, navigate, loading, location.pathname, role]);
 
    return <>{children}</>;
 }

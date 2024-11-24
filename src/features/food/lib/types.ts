@@ -4,7 +4,7 @@ export type Food = {
    price: string;
    type: "main" | "side";
    desc?: string;
-   image_path_base?: string;
-   image_path_hover?: string;
+   img_path_base?: string;
+   img_path_hover?: string;
    allergies: string;
 };
