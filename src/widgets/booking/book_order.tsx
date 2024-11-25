@@ -4,8 +4,8 @@ import { get_full_food_list as api_get_full_food_list } from "../../features/foo
 import { Food } from "../../features/food/lib/types";
 import FoodBookingSelect from "../../features/food/components/food_booking_select";
 import { uppercaseify } from "../../shared/lib/utils";
-
-export type BookingDays = "monday" | "tuesday"; //to friday
+import { jwtDecode } from "jwt-decode";
+import { order as api_order } from "../../features/orders/api";
 
 export default function BookOrder() {
    const [side_foods, set_side_foods] = useState<Food[]>([]);
@@ -16,6 +16,7 @@ export default function BookOrder() {
    const [visit_day, set_visit_day] = useState<string>("monday");
    const [first_name, set_first_name] = useState<string>("");
    const [last_name, set_last_name] = useState<string>("");
+   const [message, set_message] = useState<string>("");
 
    const fetch_foods = useCallback(async () => {
       try {
@@ -35,13 +36,20 @@ export default function BookOrder() {
       }
    }, []);
 
+   // useEffect(() => {
+   //    let id: number | null = null;
+   //    const jwt = localStorage.getItem("jwt_token");
+   //    if (jwt) {
+   //       const decoded: any = jwtDecode(jwt);
+   //       id = decoded.id;
+   //       console.log("decoded: ", decoded);
+   //    }
+   //    console.log(id);
+   // }, []);
+
    useEffect(() => {
       fetch_foods().catch(console.error);
    }, [fetch_foods]);
-
-   useEffect(() => {
-      console.log(main_foods, side_foods);
-   }, [main_foods, side_foods]);
 
    const handle_toggle_main = (food: Food) => {
       set_selected_main((prevSelected) =>
@@ -57,15 +65,39 @@ export default function BookOrder() {
    };
 
    const handle_submit = async () => {
-      if (!selected_main || (!selected_main && !selected_side)) return;
-      console.log("form submitted: ", {
-         selected_main,
-         selected_side,
-         year,
-         visit_day,
-         first_name,
-         last_name,
-      });
+      if (!selected_main && !selected_side) return;
+      // console.log("form submitted: ", {
+      //    selected_main,
+      //    selected_side,
+      //    year,
+      //    visit_day,
+      //    first_name,
+      //    last_name,
+      // });
+
+      let id: number | null = null;
+      const jwt = localStorage.getItem("jwt_token");
+      if (jwt) {
+         const decoded: any = jwtDecode(jwt);
+         id = decoded.id;
+      }
+      try {
+         const response = await api_order(
+            selected_main?.food_id ?? null,
+            selected_side?.food_id ?? null,
+            id ?? null,
+            year,
+            visit_day,
+            first_name,
+            last_name
+         );
+         console.log("response data: ", response.data);
+         if (response.data.message) {
+            set_message(response.data.message);
+         }
+      } catch (error) {
+         console.error("Error placing order", error);
+      }
 
       set_selected_main(null);
       set_selected_side(null);
@@ -85,7 +117,7 @@ export default function BookOrder() {
                         Order
                      </p>
                   </header>
-                  <div className="flex flex-col gap-4 font-main md:flex-row md:justify-between">
+                  <div className="flex flex-col gap-4 font-main sm:flex-row md:justify-between">
                      <div className="flex flex-col">
                         <header
                            className={`text-fs-l ${
@@ -94,7 +126,7 @@ export default function BookOrder() {
                         >
                            Main dishes
                         </header>
-                        <div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2 ">
+                        <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2 ">
                            {main_foods.map((food: Food, i: number) => (
                               <FoodBookingSelect
                                  key={i}
@@ -106,7 +138,7 @@ export default function BookOrder() {
                            ))}
                         </div>
                      </div>
-                     <hr className="h-[1px] bg-secondary-low-opacity w-full md:hidden my-8" />
+                     <hr className="h-[1px] bg-secondary-low-opacity w-full sm:hidden my-8" />
                      <div className="flex flex-col">
                         <header
                            className={`text-fs-l ${
@@ -115,7 +147,7 @@ export default function BookOrder() {
                         >
                            Side dishes
                         </header>
-                        <div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2">
+                        <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2">
                            {side_foods.map((food: Food, i: number) => (
                               <FoodBookingSelect
                                  key={i}
@@ -133,6 +165,7 @@ export default function BookOrder() {
                      Info{" "}
                   </header>
                   <div className="flex flex-col items-center justify-center w-full max-w-md gap-4 font-main text-fs-m">
+                     {message && <div className="px-4 py-2">{message}</div>}
                      <form
                         className="flex flex-col w-full gap-4 font-medium pointer-events-auto select-all"
                         name="info-form"

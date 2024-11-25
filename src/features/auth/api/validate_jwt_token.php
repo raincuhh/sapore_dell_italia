@@ -22,6 +22,8 @@ $conn = get_db_connection();
 
 $jwt_token = $_GET['jwt_token'] ?? null;
 
+//masssive fucking security hazard but this shit does not work, idk why the sercet key doesnt load.
+
 if (!$jwt_token) {
   http_response_code(400);
   echo json_encode(["message" => "Token is required"]);

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import { use_form } from "../../../shared/hooks/use_form";
 import { DynamicForm } from "../../../shared/components/dynamic_form";
 import { GenericTable } from "../../../shared/components/generic_table";
-import { add_food } from "../api";
+import { add_food as api_add_food } from "../api";
 import {
    update_food as api_update_food,
    get_full_food_list as api_get_full_food_list,
@@ -13,6 +13,7 @@ import FoodDeleteButton from "./food_delete_button";
 
 export default function FoodTable() {
    const [foods, set_foods] = useState<Food[]>([]);
+
    const [error, set_error] = useState<string | null>(null);
    const { form_data, handle_change, reset_form } = use_form<Food>({
       food_id: 0,
@@ -42,7 +43,7 @@ export default function FoodTable() {
 
    const handle_add_food = async () => {
       try {
-         await add_food(
+         await api_add_food(
             form_data.name,
             form_data.price,
             form_data.desc || "",
@@ -126,25 +127,3 @@ export default function FoodTable() {
       </>
    );
 }
-
-// allergies
-
-// "Contains gluten"
-// desc
-
-// "A classic pizza with tomato sauce, fresh mozzarella and basil."
-// food_id
-
-// 0
-// img_path_base
-
-// "./static/assets/images/foods/pizza_margherita_base.jpg"
-// img_path_hover
-
-// "./static/assets/images/foods/pizza_margherita_hover.jpg"
-// name
-
-// "pizza margherita"
-// price
-
-// "12.9

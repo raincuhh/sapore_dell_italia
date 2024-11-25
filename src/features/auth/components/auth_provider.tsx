@@ -32,12 +32,14 @@ export default function AuthProvider({
    const handle_jwt_token = async (jwt_token: string) => {
       set_loading(true);
       try {
-         const response = await api_validate_jwt_token(jwt_token);
-
-         let decoded_role: UserRoles = role_str_to_role_enum(
-            response.data.decoded_token.role
-         );
-         set_role(decoded_role);
+         const decoded: any = jwtDecode(jwt_token);
+         // fix validation
+         // const response = await api_validate_jwt_token(jwt_token);
+         // let decoded_role: UserRoles = role_str_to_role_enum(
+         //    response.data.decoded_token
+         //);
+         //set_role(decoded_role);
+         set_role(decoded.role);
          set_is_authenticated(true);
       } catch (err) {
          console.error("Error: ", err);
@@ -52,6 +54,7 @@ export default function AuthProvider({
    const login = async (username: string, password: string) => {
       try {
          const response: any = await api_login(username, password);
+         // console.log(jwtDecode(response.data.jwt_token));
          localStorage.setItem("jwt_token", response.data.jwt_token);
          set_jwt_token(response.data.jwt_token);
          return response.data;
@@ -62,7 +65,7 @@ export default function AuthProvider({
 
    const logout = async () => {
       set_is_authenticated(false);
-      console.log("logging out");
+      // console.log("logging out");
 
       try {
          if (!jwt_token) return;
@@ -73,7 +76,7 @@ export default function AuthProvider({
          if (!decoded_id) {
             throw new Error("failed to get decoded id");
          }
-         console.log(decoded_id);
+         // console.log(decoded_id);
          await api_increment_jwt_version(decoded_id);
          localStorage.removeItem("jwt_token");
          // window.location.reload();

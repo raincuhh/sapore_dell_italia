@@ -22,7 +22,7 @@ export default function LoginForm(): JSX.Element {
    };
 
    const handle_response = async (response: any) => {
-      console.log(response);
+      // console.log(response);
       if (!response.message) {
          console.log("Error", response.error);
       }
