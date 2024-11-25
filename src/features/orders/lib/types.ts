@@ -8,3 +8,9 @@ export type Order = {
    first_name: string;
    last_name: string;
 };
+
+export type UserOrder = {
+   day: string;
+   main_food_name: string | null;
+   side_food_name: string | null;
+};

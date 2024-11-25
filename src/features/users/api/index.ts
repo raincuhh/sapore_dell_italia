@@ -48,3 +48,18 @@ export async function update_user(
       throw new Error("Failed to update user");
    }
 }
+
+export async function get_user_profile(user_id_: number) {
+   try {
+      const response: AxiosResponse<any, any> = await axios_instance.post(
+         "/src/features/users/api/get_user_profile.php",
+         {
+            user_id: user_id_,
+         }
+      );
+      return response;
+   } catch (err) {
+      console.error("Error:", err);
+      throw new Error("Failed to delete user");
+   }
+}

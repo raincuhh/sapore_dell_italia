@@ -1,6 +1,4 @@
 <?php
-mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
-
 header("Access-Control-Allow-Origin: http://localhost:3000");
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
@@ -11,25 +9,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
   exit();
 }
 
-require "../../../shared/lib/utils.php";
+require_once "../../../shared/lib/utils.php";
 
 $conn = get_db_connection();
+
 $data = json_decode(file_get_contents("php://input"));
+$user_id = $data->user_id ?? null;
 
-$user_id = $data->user_id;
+if (!$user_id) {
+  http_response_code(400);
+  echo json_encode(["message" => "User ID is required"]);
+  exit();
+}
 
-$response = delete_user($user_id);
+$response = get_user_profile($user_id);
 
 http_response_code($response["status"]);
 echo json_encode($response["data"]);
 
-function delete_user($user_id): array
+function get_user_profile(int $user_id): array
 {
   global $conn;
 
   try {
-    //check if user exists
-    $stmt = $conn->prepare("SELECT * FROM users WHERE user_id = :user_id");
+    $sql = "SELECT user_id, name, email, created_at FROM users WHERE user_id = :user_id";
+    $stmt = $conn->prepare($sql);
     $stmt->bindParam(":user_id", $user_id, PDO::PARAM_INT);
 
     if (!$stmt->execute()) {
@@ -48,31 +52,11 @@ function delete_user($user_id): array
       ];
     }
 
-    $conn->beginTransaction();
-
-    // $conn->prepare("DELETE FROM orders WHERE user_id = :user_id")->execute(['user_id' => $user_id]);
-
-
-    $delete_stmt = $conn->prepare("DELETE FROM users WHERE user_id = :user_id");
-    $delete_stmt->bindParam(":user_id", $user_id, PDO::PARAM_INT);
-
-    if (!$delete_stmt->execute()) {
-      $conn->rollBack();
-      return [
-        "status" => 500,
-        "data" => ["message" => "Failed to delete user"]
-      ];
-    }
-
-    $conn->commit();
-
     return [
       "status" => 200,
-      "data" => ["message" => "User successfully deleted"]
+      "data" => ["user" => $user]
     ];
-
-  } catch (mysqli_sql_exception $err) {
-    $conn->rollBack();
+  } catch (PDOException $err) {
     return [
       "status" => 500,
       "data" => [
@@ -82,8 +66,6 @@ function delete_user($user_id): array
     ];
   } finally {
     $stmt = null;
-    $delete_stmt = null;
     $conn = null;
   }
 }
-?>
