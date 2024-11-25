@@ -67,10 +67,10 @@ const routes = createRoutesFromElements(
       <Route
          path="/booking"
          element={
-            <PublicRoute>
+            <ProtectedRoute>
                <PageBooking />
                <StyleSheetLoader />
-            </PublicRoute>
+            </ProtectedRoute>
          }
          errorElement={<PageError />}
       />
