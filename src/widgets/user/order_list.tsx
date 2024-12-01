@@ -6,6 +6,7 @@ import { jwtDecode } from "jwt-decode";
 import RenderList from "../../shared/components/render_list";
 import { UserOrder } from "../../features/orders/lib/types";
 import OrderProfile from "./order_profile";
+import CategoryLayout from "../../shared/components/category_layout";
 
 export default function OrderList() {
    const [orders, set_orders] = useState<UserOrder[]>([]);
@@ -42,17 +43,19 @@ export default function OrderList() {
 
    return (
       <>
-         <div className="flex flex-col gap-2 mt-8">
-            <header className="font-bold text-fs-l sm:text-fs-xl">
-               Your Orders
-            </header>
-            <RenderList
-               data={orders}
-               render_item={(order: UserOrder, i: number) => (
-                  <OrderProfile key={i} order={order} />
-               )}
-            />
-         </div>
+         <CategoryLayout>
+            <div className="flex flex-col gap-2 mt-8">
+               <header className="font-bold text-fs-l sm:text-fs-xl">
+                  Your Orders
+               </header>
+               <RenderList
+                  data={orders}
+                  render_item={(order: UserOrder, i: number) => (
+                     <OrderProfile key={i} order={order} />
+                  )}
+               />
+            </div>
+         </CategoryLayout>
       </>
    );
 }

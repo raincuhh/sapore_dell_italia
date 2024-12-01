@@ -55,7 +55,7 @@ export default function BookOrder() {
       set_selected_main((prevSelected) =>
          prevSelected === food ? null : food
       );
-      set_selected_side(null);
+      // set_selected_side(null);
    };
 
    const handle_toggle_side = (food: Food) => {

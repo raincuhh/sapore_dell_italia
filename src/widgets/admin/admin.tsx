@@ -8,7 +8,7 @@ import AdminFoodListSubPage from "./admin_food_list";
 import AdminOrderListSubPage from "./admin_order_list";
 
 const adminSubPageComponents = {
-   [AdminSubPages.dashboard]: AdminDashboardSubPage,
+   // [AdminSubPages.dashboard]: AdminDashboardSubPage,
    [AdminSubPages.food_list]: AdminFoodListSubPage,
    [AdminSubPages.order_list]: AdminOrderListSubPage,
    [AdminSubPages.user_list]: AdminUserListSubPage,
@@ -18,7 +18,7 @@ export default function AdminMain() {
    const { sub_page } = use_admin_page();
 
    const SubPageComponent =
-      adminSubPageComponents[sub_page] || AdminDashboardSubPage;
+      adminSubPageComponents[sub_page] || AdminUserListSubPage;
 
    return (
       <>

@@ -10,11 +10,8 @@ export default function PageUser(): JSX.Element {
       <PageLayout>
          <Navbar />
          <div className="pt-[52.9px]"></div>
-         <CategoryLayout>
-            <UserProfile />
-            <OrderList />
-         </CategoryLayout>
-         <Footer />
+         <UserProfile />
+         <OrderList />
       </PageLayout>
    );
 }

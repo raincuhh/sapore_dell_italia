@@ -19,7 +19,7 @@ export default function AdminSidebar({}: AdminSidebarProps) {
                   className={"w-[40px]"}
                   root_css="hidden sm:block"
                />
-               <NavButton
+               {/* <NavButton
                   icon_css={`bx bx-home-alt-2 ${
                      sub_page === AdminSubPages.dashboard && "!text-secondary"
                   }`}
@@ -29,7 +29,7 @@ export default function AdminSidebar({}: AdminSidebarProps) {
                   }`}
                   callback_switch_page={switch_page}
                   page={AdminSubPages.dashboard}
-               />
+               /> */}
                <div className="w-[1px] sm:h-[1px] sm:w-full bg-secondary-low-opacity"></div>
                <NavButton
                   icon_css={`bx bx-user ${

@@ -7,8 +7,8 @@ export default function AdminNavbar() {
 
    const header_title = (sub_page: AdminSubPages) => {
       switch (sub_page) {
-         case AdminSubPages.dashboard:
-            return "Dashboard";
+         // case AdminSubPages.dashboard:
+         //    return "Dashboard";
          case AdminSubPages.food_list:
             return "Foods";
          case AdminSubPages.order_list:

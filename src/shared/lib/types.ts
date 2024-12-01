@@ -20,7 +20,7 @@ export type AuthContextProps = {
 };
 
 export enum AdminSubPages {
-   dashboard = "dashboard",
+   // dashboard = "dashboard",
    user_list = "user_list",
    food_list = "food_list",
    order_list = "order_list",

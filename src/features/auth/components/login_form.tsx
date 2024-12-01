@@ -22,7 +22,14 @@ export default function LoginForm(): JSX.Element {
    };
 
    const handle_response = async (response: any) => {
-      // console.log(response);
+      if (!response || typeof response !== "object") {
+         console.error("Invalid response received:", response);
+         set_msg(
+            "An unexpected error occurred. Please try refreshing the page."
+         );
+         return;
+      }
+
       if (!response.message) {
          console.log("Error", response.error);
       }
